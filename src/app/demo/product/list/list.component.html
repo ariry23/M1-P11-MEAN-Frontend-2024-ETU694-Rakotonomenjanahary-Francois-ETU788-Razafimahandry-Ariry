@@ -1,0 +1,9 @@
+<div *ngIf="loading$ | async">
+    <!-- Add your loading spinner HTML/CSS here -->
+    Loading...
+</div>
+
+
+<div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div  *ngFor="let movieName of Movies" cdkDrag>{{movieName}}</div>
+</div>
