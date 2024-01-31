@@ -27,6 +27,7 @@ import { UtilCookieService } from './core/services/util-cookie.service';
 import { AuthInterceptor } from './core/interceptor/auth-interceptor';
 import { ApiUrlInterceptor } from './core/interceptor/api-url-interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     NavItemComponent,
     NavSearchComponent,
     ToggleFullScreenDirective,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
