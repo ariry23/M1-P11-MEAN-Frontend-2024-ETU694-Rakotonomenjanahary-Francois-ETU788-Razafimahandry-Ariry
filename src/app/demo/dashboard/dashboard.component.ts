@@ -244,7 +244,7 @@ export default class DashboardComponent implements OnInit {
     {
       title: 'Monthly Sales',
       icon: 'icon-arrow-down text-c-red',
-      amount: '$2.9',
+      amount: '$2.942.32',
       percentage: '36%',
       progress: 35,
       design: 'col-md-6',

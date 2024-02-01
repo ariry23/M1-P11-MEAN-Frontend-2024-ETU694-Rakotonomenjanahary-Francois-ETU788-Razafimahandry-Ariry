@@ -27,7 +27,8 @@ import { UtilCookieService } from './core/services/util-cookie.service';
 import { AuthInterceptor } from './core/interceptor/auth-interceptor';
 import { ApiUrlInterceptor } from './core/interceptor/api-url-interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FooterComponent } from './footer/footer.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,6 @@ import { FooterComponent } from './footer/footer.component';
     NavItemComponent,
     NavSearchComponent,
     ToggleFullScreenDirective,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +56,9 @@ import { FooterComponent } from './footer/footer.component';
     BrowserAnimationsModule , 
     HttpClientModule , 
     BrowserAnimationsModule , 
-    DragDropModule
+    DragDropModule , 
+    NgxFileDropModule , 
+    NgxSpinnerModule
   ],
   providers: [NavigationItem ,  UtilCookieService , 
   {
