@@ -229,3 +229,12 @@ Please generate Github issue if you found bug in any version. We are try to be r
 
 
 ## Social Prof
+
+
+## installation 
+- prerequis : node et angular 
+- faire un pull de la branche develop 
+- npm install --force 
+- allez dans environment.ts et configure apiBaseUrl si necessaire
+- ng serve  
+- si il y a des erreur durant le lancement , allez dans app.module.ts et installer manuellement les modules manquante suivi par --force (eg : npm install... --force ) et relancer ng serve 
