@@ -18,4 +18,8 @@ export class UtilCookieService {
   removeToken(): void {
     this.cookieService.delete('appToken');
   }
+
+  hasToken(): boolean {
+    return this.cookieService.check('appToken');
+  }
 }

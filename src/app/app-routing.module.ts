@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
-import { authGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        //canActivate: [authGuard] , 
+        canActivateChild: [AuthGuard] , 
         path: 'dashboard',
         loadComponent: () => import('./demo/dashboard/dashboard.component'),
       },

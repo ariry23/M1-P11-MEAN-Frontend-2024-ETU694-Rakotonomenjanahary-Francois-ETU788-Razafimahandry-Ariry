@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { UtilCookieService } from 'src/app/core/services/util-cookie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-right',
@@ -32,15 +34,25 @@ export class NavRightComponent {
   visibleUserList: boolean;
   chatMessage: boolean;
   friendId: boolean;
-
-  constructor(config: NgbDropdownConfig) {
+  router : Router;
+  utilCookieService : UtilCookieService;
+  constructor(config: NgbDropdownConfig , utilCookieService: UtilCookieService , router :  Router) {
     config.placement = 'bottom-right';
     this.visibleUserList = false;
     this.chatMessage = false;
+    this.utilCookieService = utilCookieService ;
+    this.router = router ;
   }
 
   onChatToggle(friend_id) {
     this.friendId = friend_id;
     this.chatMessage = !this.chatMessage;
+  }
+
+
+  logout()
+  {
+    this.utilCookieService.removeToken() ; 
+    this.router.navigate(['/auth/signin']); 
   }
 }

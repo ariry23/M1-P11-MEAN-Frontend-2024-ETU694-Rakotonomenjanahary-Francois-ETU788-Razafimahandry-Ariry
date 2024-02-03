@@ -1,14 +1,11 @@
 import { CanActivateFn } from '@angular/router';
+import { UtilCookieService } from '../core/services/util-cookie.service';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  let role : string = "test" ; 
-  if(role === "admin")
-  {
-    return true;
+
+export class AuthGuard {
+  constructor(private utilCookieService: UtilCookieService) {}
+
+  canActivateChild(): boolean {
+    return this.utilCookieService.hasToken() ; 
   }
-  else
-  {
-    return false;
-  }
-  
-};
+}

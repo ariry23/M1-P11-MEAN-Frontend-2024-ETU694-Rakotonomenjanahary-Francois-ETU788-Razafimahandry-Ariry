@@ -29,6 +29,7 @@ import { ApiUrlInterceptor } from './core/interceptor/api-url-interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule , 
     DragDropModule , 
     NgxFileDropModule , 
-    NgxSpinnerModule
+    NgxSpinnerModule , 
+    ToastrModule.forRoot()
   ],
   providers: [NavigationItem ,  UtilCookieService , 
   {

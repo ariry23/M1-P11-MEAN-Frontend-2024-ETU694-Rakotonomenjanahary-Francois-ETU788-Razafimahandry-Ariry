@@ -29,7 +29,8 @@
             "assets": ["src/favicon.ico", "src/assets", "src/fake-data"],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "src/styles.scss"
+              "src/styles.scss" , 
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/apexcharts/dist/apexcharts.min.js"
