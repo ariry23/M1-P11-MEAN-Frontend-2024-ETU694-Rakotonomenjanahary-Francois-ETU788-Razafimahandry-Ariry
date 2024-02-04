@@ -56,6 +56,13 @@ const routes: Routes = [
           import('./demo/product/list/list.component'),
       },
       {
+        path: 'service',
+        loadChildren: () =>
+          import('./demo/service/service.module').then(
+            (m) => m.ServiceModule,
+          ),
+      },
+      {
         path: 'car',
         loadChildren: () =>
           import('./demo/car/car.module').then(

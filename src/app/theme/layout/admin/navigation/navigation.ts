@@ -182,6 +182,29 @@ const NavigationItems = [
         external: true,
       },
       {
+        id: 'service',
+        title: 'service',
+        type: 'group',
+        icon: 'icon-ui',
+        children: [
+          {
+            id: 'basic',
+            title: 'Component',
+            type: 'collapse',
+            icon: 'feather icon-box',
+            children: [
+              {
+                id: 'button',
+                title: 'Liste',
+                type: 'item',
+                url: 'service/list',
+              },
+             
+            ],
+          },
+        ],
+      },
+      {
         id: 'buy_now',
         title: 'Buy Now',
         type: 'item',
