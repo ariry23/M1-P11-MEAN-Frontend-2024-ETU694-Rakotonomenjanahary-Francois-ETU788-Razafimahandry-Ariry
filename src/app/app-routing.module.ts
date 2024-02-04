@@ -15,8 +15,8 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        canActivateChild: [AuthGuard] , 
-        path: 'dashboard',
+        canActivate: [AuthGuard] , 
+        path: 'dashboard',  
         loadComponent: () => import('./demo/dashboard/dashboard.component'),
       },
       {
