@@ -30,6 +30,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
+import { FooterComponent } from './demo/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { ToastrModule } from 'ngx-toastr';
     NavItemComponent,
     NavSearchComponent,
     ToggleFullScreenDirective,
+    
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import { ToastrModule } from 'ngx-toastr';
     DragDropModule , 
     NgxFileDropModule , 
     NgxSpinnerModule , 
-    ToastrModule.forRoot()
+    FooterComponent , 
+    ToastrModule.forRoot() ,
   ],
   providers: [NavigationItem ,  UtilCookieService , 
   {

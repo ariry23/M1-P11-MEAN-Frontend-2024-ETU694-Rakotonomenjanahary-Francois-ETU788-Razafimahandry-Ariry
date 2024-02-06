@@ -13,7 +13,10 @@ const routes: Routes = [
         path: 'detail/:id',
         loadComponent: () => import('./detail/detail.component') 
       },
-      
+      {
+        path: 'reservation/historique',
+        loadComponent: () => import('./historique-reservation/historique-reservation.component') 
+      },
     ],
   },
 ];
