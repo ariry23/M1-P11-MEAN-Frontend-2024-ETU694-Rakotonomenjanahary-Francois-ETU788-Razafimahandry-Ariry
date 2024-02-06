@@ -69,6 +69,11 @@ const routes: Routes = [
             (m) => m.CarModule,
           ),
       },
+      {
+        path: 'account',
+        loadComponent: () =>
+          import('./demo/account/account.component')
+      },
     ],
   },
   {
