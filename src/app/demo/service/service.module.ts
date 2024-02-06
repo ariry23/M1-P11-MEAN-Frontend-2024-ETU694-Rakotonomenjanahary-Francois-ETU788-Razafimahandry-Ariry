@@ -6,7 +6,7 @@ import { ReservationPopupComponent } from './reservation-popup/reservation-popup
 
 @NgModule({
   declarations: [
-    ReservationPopupComponent
+    ReservationPopupComponent,
   ],
   imports: [
     CommonModule , 
