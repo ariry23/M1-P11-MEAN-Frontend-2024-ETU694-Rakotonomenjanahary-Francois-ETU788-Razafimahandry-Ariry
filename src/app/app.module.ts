@@ -31,6 +31,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './demo/footer/footer.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { FooterComponent } from './demo/footer/footer.component';
     
   ],
   imports: [
+    MatDialogModule , 
     BrowserModule,
     AppRoutingModule,
     FormsModule,
