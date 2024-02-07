@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-
+import { jwtDecode } from 'jwt-decode';
+import { TokenService } from 'src/app/core/services/token.service';
+import { filter } from 'rxjs/operators';
+import { from } from 'rxjs';
 export interface NavigationItem {
   id: string;
   title: string;
@@ -24,12 +27,13 @@ export interface NavigationItem {
 export interface Navigation extends NavigationItem {
   children?: NavigationItem[];
 }
-const customerNavigationItems = [
+const navigationItems = [
     {
       id: 'basic',
       title: 'Service',
       type: 'collapse',
       icon: 'feather icon-box',
+      roles : ['customer'] , 
       children: [
         {
           id: 'button',
@@ -41,7 +45,7 @@ const customerNavigationItems = [
           id: 'button',
           title: 'Reservations',
           type: 'item',
-          url: 'service/reservation/historique',
+          url: 'service/reservation/historique', 
         },
         
       ],
@@ -49,11 +53,11 @@ const customerNavigationItems = [
     
   
 ];
-let NavigationItems = [] ; 
+/*let NavigationItems = [] ; 
 if(1 < 2 )
 {
   NavigationItems = customerNavigationItems ; 
-}
+} */
 
  /*
 const NavigationItems = [
@@ -251,7 +255,26 @@ const NavigationItems = [
 
 @Injectable()
 export class NavigationItem {
+  constructor(private tokenService: TokenService){}
+   arrayContainsElement(arr: any[], element: any): boolean {
+    return arr.includes(element);
+  }
   get() {
-    return NavigationItems;
+    let roleName : string = "" ; 
+    if(this.tokenService.hasToken())
+    {
+      let decoded : any = jwtDecode(this.tokenService.getToken());
+      roleName = decoded.role.name ; 
+    }
+    console.log("role name: " + roleName);
+    let filteredNavigationItems : any[] = [] ; 
+    let source = from(navigationItems) ; 
+    if(roleName != "")
+    { 
+        let filtered = source.pipe(filter(navItem => navItem.roles.includes(roleName) === true))  ; 
+        filtered.subscribe(val => filteredNavigationItems.push(val)) ; 
+    }
+    console.log("filtered items size" + filteredNavigationItems.length);
+    return filteredNavigationItems;
   }
 }

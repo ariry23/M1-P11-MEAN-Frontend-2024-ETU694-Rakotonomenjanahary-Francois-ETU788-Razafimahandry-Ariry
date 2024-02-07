@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { AuthGuard } from './guards/auth.guard';
+
 const customerRoutes : Routes = [
   {
     path: '',
