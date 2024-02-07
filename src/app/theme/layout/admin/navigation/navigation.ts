@@ -24,7 +24,38 @@ export interface NavigationItem {
 export interface Navigation extends NavigationItem {
   children?: NavigationItem[];
 }
+const customerNavigationItems = [
+    {
+      id: 'basic',
+      title: 'Service',
+      type: 'collapse',
+      icon: 'feather icon-box',
+      children: [
+        {
+          id: 'button',
+          title: 'Liste',
+          type: 'item',
+          url: 'service/list',
+        },
+        {
+          id: 'button',
+          title: 'Reservations',
+          type: 'item',
+          url: 'service/reservation/historique',
+        },
+        
+      ],
+    },
+    
+  
+];
+let NavigationItems = [] ; 
+if(1 < 2 )
+{
+  NavigationItems = customerNavigationItems ; 
+}
 
+ /*
 const NavigationItems = [
   {
     id: 'navigation',
@@ -216,7 +247,7 @@ const NavigationItems = [
       },
     ],
   },
-];
+];*/
 
 @Injectable()
 export class NavigationItem {

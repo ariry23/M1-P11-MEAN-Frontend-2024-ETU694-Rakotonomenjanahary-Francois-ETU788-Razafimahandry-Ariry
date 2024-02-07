@@ -3,7 +3,54 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { AuthGuard } from './guards/auth.guard';
+const customerRoutes : Routes = [
+  {
+    path: '',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'service/list',
+        pathMatch: 'full',
+      },
+      {
+        path: 'service',
+        loadChildren: () =>
+          import('./demo/service/service.module').then(
+            (m) => m.ServiceModule,
+          ),
+      }
+    ],
+  }
+];
 
+
+
+
+let routes: Routes = [
+  {
+    path: '',
+    component: GuestComponent,
+    children: [
+      {
+        path: 'auth',
+        loadChildren: () =>
+          import('./demo/pages/authentication/authentication.module').then(
+            (m) => m.AuthenticationModule,
+          ),
+      },
+    ],
+  },
+] ; 
+
+if(1<2)
+{
+  routes = [...routes , ...customerRoutes] ; 
+  console.log(routes) ; 
+}
+
+
+/*
 const routes: Routes = [
   {
     path: '',
@@ -89,7 +136,7 @@ const routes: Routes = [
       },
     ],
   },
-];
+]; */ 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
