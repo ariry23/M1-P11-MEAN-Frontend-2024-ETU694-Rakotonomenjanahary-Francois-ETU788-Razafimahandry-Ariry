@@ -23,7 +23,6 @@ import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { ToggleFullScreenDirective } from './theme/shared/components/full-screen/toggle-full-screen';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { UtilCookieService } from './core/services/util-cookie.service';
 import { AuthInterceptor } from './core/interceptor/auth-interceptor';
 import { ApiUrlInterceptor } from './core/interceptor/api-url-interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -32,6 +31,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FooterComponent } from './demo/footer/footer.component';
+import { TokenService } from './core/services/token.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +67,7 @@ import { FooterComponent } from './demo/footer/footer.component';
     FooterComponent , 
     ToastrModule.forRoot() ,
   ],
-  providers: [NavigationItem ,  UtilCookieService , 
+  providers: [NavigationItem ,  TokenService , 
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

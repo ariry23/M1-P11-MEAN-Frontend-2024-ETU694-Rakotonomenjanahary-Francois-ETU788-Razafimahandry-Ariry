@@ -19,21 +19,24 @@ const customerRoutes : Routes = [
           import('./demo/service/service.module').then(
             (m) => m.ServiceModule,
           ),
-      }
+      } , 
+      {
+        path: 'account',
+        loadComponent: () =>
+          import('./demo/account/account.component')
+      },
     ],
   }
+
 ];
-
-
-
 
 let routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: GuestComponent,
     children: [
       {
-        path: 'auth',
+        path: '',
         loadChildren: () =>
           import('./demo/pages/authentication/authentication.module').then(
             (m) => m.AuthenticationModule,
@@ -41,6 +44,8 @@ let routes: Routes = [
       },
     ],
   },
+  
+
 ] ; 
 
 if(1<2)

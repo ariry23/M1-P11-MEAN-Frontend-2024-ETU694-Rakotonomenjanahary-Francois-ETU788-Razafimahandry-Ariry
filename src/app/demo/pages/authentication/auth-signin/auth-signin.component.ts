@@ -6,8 +6,9 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { environment } from 'src/environments/environment';
 import { Api } from 'src/app/core/models/api';
 import { AlertService } from 'src/app/core/services/alert.service';
-import { UtilCookieService } from 'src/app/core/services/util-cookie.service';
 import { ToastrService } from 'ngx-toastr';
+import { TokenService } from 'src/app/core/services/token.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-auth-signin',
@@ -19,11 +20,10 @@ import { ToastrService } from 'ngx-toastr';
 export default class AuthSigninComponent implements OnInit {
   loginForm: FormGroup;
   apiBaseUrl: string;
-  constructor(private apiService: ApiService , private alertService: AlertService , private utilCookieService:UtilCookieService , private toastr : ToastrService , private router : Router) {
+  constructor(private apiService: ApiService , private alertService: AlertService , private tokenService:TokenService , private toastr : ToastrService , private router : Router) {
     this.apiBaseUrl = environment.apiBaseUrl;
     this.buildLoginForm();
-
-    console.log(this.utilCookieService.hasToken()) ; 
+    
   }
 
   ngOnInit(): void {
@@ -45,8 +45,10 @@ export default class AuthSigninComponent implements OnInit {
     }
     this.apiService.postData('user/signin', apiData).subscribe(
       data => {
-        this.utilCookieService.setToken(data.token); 
-        this.router.navigate(["/dashboard"]) ; 
+        this.tokenService.setToken(data.token); 
+        const decoded = jwtDecode(data.token);
+        console.log(decoded);
+        this.router.navigate([""]) ; 
       } , 
       error => {
           this.toastr.error(error.error);
