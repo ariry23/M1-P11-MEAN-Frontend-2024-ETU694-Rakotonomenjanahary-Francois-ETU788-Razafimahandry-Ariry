@@ -30,8 +30,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
-import { FooterComponent } from './demo/footer/footer.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FooterComponent } from './demo/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
