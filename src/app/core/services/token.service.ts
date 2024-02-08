@@ -7,18 +7,18 @@ import { CookieService } from 'ngx-cookie-service';
 export class TokenService {
   constructor(private cookieService : CookieService) {}
   setToken(token: string): void {
-    this.cookieService.set('appToken', token);
+      window.sessionStorage.setItem("appToken", token);
   }
 
   getToken(): string {
-    return this.cookieService.get('appToken');
+    return window.sessionStorage.getItem("appToken");
   }
 
   removeToken(): void {
-    this.cookieService.delete('appToken');
+    window.sessionStorage.removeItem("appToken");
   }
 
   hasToken(): boolean {
-    return this.cookieService.check('appToken');
+    return  sessionStorage.getItem("appToken") !== null;
   }
 }

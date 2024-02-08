@@ -8,7 +8,10 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate , CanActivateChild {
-  constructor(private tokenService: TokenService , private router : Router) {}
+  constructor(private tokenService: TokenService , private router : Router) {
+
+    
+  }
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     console.log("Auth guard check") ; 
     if(this.tokenService.hasToken())

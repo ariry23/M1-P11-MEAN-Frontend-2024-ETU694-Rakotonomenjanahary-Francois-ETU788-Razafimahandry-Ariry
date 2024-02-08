@@ -32,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FooterComponent } from './demo/footer/footer.component';
 import { TokenService } from './core/services/token.service';
+import { NavigationInterceptor } from './core/interceptor/navigation.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,9 +66,9 @@ import { TokenService } from './core/services/token.service';
     NgxFileDropModule , 
     NgxSpinnerModule , 
     FooterComponent , 
-    ToastrModule.forRoot() ,
+    ToastrModule.forRoot() ,  
   ],
-  providers: [NavigationItem ,  TokenService , 
+  providers: [NavigationItem ,  TokenService , NavigationInterceptor , 
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

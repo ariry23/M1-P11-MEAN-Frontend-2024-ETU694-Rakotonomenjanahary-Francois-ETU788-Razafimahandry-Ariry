@@ -47,13 +47,15 @@ export default class AuthSigninComponent implements OnInit {
     this.apiService.postData('user/signin', apiData).subscribe(
       data => {
         this.tokenService.setToken(data.token); 
-        const decoded : any = jwtDecode(data.token);
+        //const decoded : any = jwtDecode(data.token);
         console.log("get data into a role object");
-        let role : Role = decoded.role ; 
-        console.log(role);  
-        console.log("role name :+++++++++++ " + role.name);
-       // console.log(decoded);
-        this.router.navigate([""]) ; 
+        //let role : Role = decoded.role ; 
+        //console.log(role);  
+        //console.log("role name :+++++++++++ " + role.name);
+       // console.log(decoded); */
+
+       //window.sessionStorage.setItem("token", data.token);
+        this.router.navigate(["/"]) ; 
       } , 
       error => {
           this.toastr.error(error.error);

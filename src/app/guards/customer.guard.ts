@@ -10,39 +10,40 @@ import { jwtDecode } from 'jwt-decode';
 export class CustomerGuard implements CanActivateChild, CanActivate {
   constructor(private tokenService: TokenService, private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    let isCustomer : boolean = false ; 
+ 
     if(this.tokenService.hasToken())
     {
         let decodedToken : any = jwtDecode(this.tokenService.getToken()) ; 
         let roleName : string = decodedToken.role.name ; 
         if(roleName === "customer")
         {
-          isCustomer = true ; 
           return true ;
         }
         else{
+            this.router.navigate(["/"]);
             return false ; 
         }
     }
-    this.router.navigate(['/auth/signin']);
+    this.router.navigate([state.url]);
     return false ; 
   }
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    let isCustomer : boolean = false ; 
+
     if(this.tokenService.hasToken())
     {
         let decodedToken : any = jwtDecode(this.tokenService.getToken()) ; 
         let roleName : string = decodedToken.role.name ; 
         if(roleName === "customer")
         {
-          isCustomer = true ; 
+         
           return true ;
         }
         else{
-          return false ; 
+            this.router.navigate(["/"]);
+            return false ; 
         }
     }
-    this.router.navigate(['/auth/signin']);
+    this.router.navigate([state.url]);
     return false ; 
   }
 }

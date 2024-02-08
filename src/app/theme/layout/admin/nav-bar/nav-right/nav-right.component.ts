@@ -53,10 +53,7 @@ export class NavRightComponent {
 
   logout()
   {
-    this.cookieService.delete("appToken", '/');
-    this.cookieService.delete("appToken", '/auth');
-    this.cookieService.delete("appToken", '/service');
-    this.cookieService.delete("appToken", '/cookie');
+    this.tokenService.removeToken() ; 
     this.router.navigate(['/auth/signin']); 
   }
 

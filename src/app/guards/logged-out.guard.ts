@@ -12,12 +12,15 @@ export class LoggedOutGuard implements CanActivate , CanActivateChild {
   
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     console.log("logged-out guard check") ; 
+   
     if(this.tokenService.hasToken())
     {
+      console.log(this.router) ; 
         this.router.navigate(['/']);
         return false ;
     }
     else{
+      console.log(childRoute) ; 
       console.log("dont has token") ; 
         return true ; 
     }
@@ -26,7 +29,8 @@ export class LoggedOutGuard implements CanActivate , CanActivateChild {
     console.log("logged-out guard check") ; 
     if(this.tokenService.hasToken())
     {
-        this.router.navigate(['/auth/signin']);
+        
+        this.router.navigate(['/']);
         return false ;
     }
     else{
