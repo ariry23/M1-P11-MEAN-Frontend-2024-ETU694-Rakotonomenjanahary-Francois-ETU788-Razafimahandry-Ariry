@@ -29,26 +29,22 @@ export interface Navigation extends NavigationItem {
 }
 const navigationItems = [
     {
-      id: 'basic',
-      title: 'Service',
-      type: 'collapse',
-      icon: 'feather icon-box',
+      id: 'services-list',
+      title: 'Services',
+      type: 'item',
+      url: '/service/list',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar',
       roles : ['customer'] , 
-      children: [
-        {
-          id: 'button',
-          title: 'Liste',
-          type: 'item',
-          url: 'service/list',
-        },
-        {
-          id: 'button',
-          title: 'Reservations',
-          type: 'item',
-          url: 'service/reservation/historique', 
-        },
-        
-      ],
+    },
+    {
+      id: 'reservation-rendez-vous',
+      title: 'Historique rendez vous',
+      type: 'item',
+      url: '/rendez-vous/historique',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['customer'] , 
     },
     
   

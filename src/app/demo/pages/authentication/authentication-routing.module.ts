@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoggedOutGuard } from 'src/app/guards/logged-out.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivateChild : [LoggedOutGuard] , 
     children: [
       {
         path: 'signin',

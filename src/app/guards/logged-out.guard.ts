@@ -7,29 +7,30 @@ import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate , CanActivateChild {
+export class LoggedOutGuard implements CanActivate , CanActivateChild {
   constructor(private tokenService: TokenService , private router : Router) {}
+  
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    console.log("Auth guard check") ; 
+    console.log("logged-out guard check") ; 
     if(this.tokenService.hasToken())
     {
-        return true ;
+        console.log("has token") ; 
+        return false ;
     }
     else{
-        this.router.navigate(['/auth/signin']);
-        return false ; 
+      console.log("dont has token") ; 
+        return true ; 
     }
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    console.log("Auth guard check") ; 
+    console.log("logged-out guard check") ; 
     if(this.tokenService.hasToken())
     {
-        
-        return true ;
+        this.router.navigate(['/auth/signin']);
+        return false ;
     }
     else{
-        this.router.navigate(['/auth/signin']);
-        return false ; 
+        return true ; 
     }
   
   }

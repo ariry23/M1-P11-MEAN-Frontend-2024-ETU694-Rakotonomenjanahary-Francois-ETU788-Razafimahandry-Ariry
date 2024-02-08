@@ -3,6 +3,7 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/core/services/token.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-nav-right',
@@ -36,7 +37,7 @@ export class NavRightComponent {
   friendId: boolean;
   router : Router;
   tokenService : TokenService;
-  constructor(config: NgbDropdownConfig , tokenService: TokenService , router :  Router) {
+  constructor(config: NgbDropdownConfig , tokenService: TokenService , router :  Router , private cookieService : CookieService) {
     config.placement = 'bottom-right';
     this.visibleUserList = false;
     this.chatMessage = false;
@@ -52,8 +53,11 @@ export class NavRightComponent {
 
   logout()
   {
-    this.tokenService.removeToken() ; 
-    this.router.navigate(['/auth/signin']); 
+    this.cookieService.delete("appToken", '/');
+    this.cookieService.delete("appToken", '/auth');
+    this.cookieService.delete("appToken", '/service');
+    this.cookieService.delete("appToken", '/cookie');
+    //this.router.navigate(['/auth/signin']); 
   }
 
   redirectToAccount()

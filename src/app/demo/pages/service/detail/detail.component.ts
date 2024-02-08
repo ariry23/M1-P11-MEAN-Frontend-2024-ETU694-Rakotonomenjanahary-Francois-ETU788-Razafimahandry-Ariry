@@ -15,7 +15,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReservationPopupComponent } from '../reservation-popup/reservation-popup.component';
 
 
   
@@ -39,7 +38,7 @@ export default class DetailComponent {
   ) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ReservationPopupComponent, {
+    /*const dialogRef = this.dialog.open(ReservationPopupComponent, {
       panelClass: 'custom-dialog' , 
       data: {name: this.name, animal: this.animal},
      
@@ -48,7 +47,7 @@ export default class DetailComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
-    });
+    } );*/
   }
 
  

@@ -2,39 +2,53 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
+import { CustomerGuard } from './guards/customer.guard';
+import { LoggedOutGuard } from './guards/logged-out.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { MainGuard } from './guards/main.guard';
 
-const customerRoutes : Routes = [
+const routes : Routes = [
   {
+    //canActivateChild: [AuthGuard] , 
     path: '',
     component: AdminComponent,
+    canActivateChild: [AuthGuard] , 
     children: [
       {
         path: '',
         redirectTo: 'service/list',
+        canActivateChild: [MainGuard] , 
         pathMatch: 'full',
       },
       {
         path: 'service',
         loadChildren: () =>
-          import('./demo/service/service.module').then(
+          import('./demo/pages/service/service.module').then(
             (m) => m.ServiceModule,
+          ),
+      } , 
+      {
+        path: 'rendez-vous',
+        loadChildren: () =>
+          import('./demo/pages/rendez-vous/rendez-vous.module').then(
+            (m) => m.RendezVousModule,
           ),
       } , 
       {
         path: 'account',
         loadComponent: () =>
-          import('./demo/account/account.component')
+          import('./demo/pages/account/account.component')
+      },
+      {
+        path: 'profil-horaire',
+        loadComponent: () =>
+          import('./demo/pages/profil-horaire/profil-horaire.component')
       },
     ],
-  }
-
-];
-
-let routes: Routes = [
-  {
+  } , {
     path: 'auth',
     component: GuestComponent,
+   
     children: [
       {
         path: '',
@@ -45,15 +59,9 @@ let routes: Routes = [
       },
     ],
   },
-  
 
-] ; 
+];
 
-if(1<2)
-{
-  routes = [...routes , ...customerRoutes] ; 
-  console.log(routes) ; 
-}
 
 
 /*
