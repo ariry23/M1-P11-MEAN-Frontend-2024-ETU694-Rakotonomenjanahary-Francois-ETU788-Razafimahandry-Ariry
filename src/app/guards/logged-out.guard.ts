@@ -14,7 +14,7 @@ export class LoggedOutGuard implements CanActivate , CanActivateChild {
     console.log("logged-out guard check") ; 
     if(this.tokenService.hasToken())
     {
-        console.log("has token") ; 
+        this.router.navigate(['/']);
         return false ;
     }
     else{
