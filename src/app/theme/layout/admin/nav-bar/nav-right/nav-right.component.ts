@@ -53,7 +53,7 @@ export class NavRightComponent {
 
   logout()
   {
-    this.tokenService.removeToken() ; 
+    localStorage.clear();
     this.router.navigate(['/auth/signin']); 
   }
 

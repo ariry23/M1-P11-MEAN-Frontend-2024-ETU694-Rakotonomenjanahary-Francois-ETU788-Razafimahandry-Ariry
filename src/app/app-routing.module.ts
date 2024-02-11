@@ -6,7 +6,9 @@ import { CustomerGuard } from './guards/customer.guard';
 import { LoggedOutGuard } from './guards/logged-out.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { MainGuard } from './guards/main.guard';
-
+import { EmployeeGuard } from './guards/employee-guard';
+import { AdminGuard } from './guards/admin.guard';
+let test = "test" ; 
 const routes : Routes = [
   {
     //canActivateChild: [AuthGuard] , 
@@ -16,7 +18,7 @@ const routes : Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'service/list',
+        redirectTo: window.localStorage.getItem("mainRoute") === null ? '/auth/signin' : window.localStorage.getItem("mainRoute"),
         canActivateChild: [MainGuard] , 
         pathMatch: 'full',
       },
@@ -41,9 +43,16 @@ const routes : Routes = [
       },
       {
         path: 'profil-horaire',
+        canActivate: [EmployeeGuard] ,
         loadComponent: () =>
           import('./demo/pages/profil-horaire/profil-horaire.component')
       },
+      {
+        path: 'personnel',
+        canActivate: [AdminGuard] , 
+        loadComponent: () =>
+          import('./demo/pages/personnel/personnel.component')
+      }
     ],
   } , {
     path: 'auth',

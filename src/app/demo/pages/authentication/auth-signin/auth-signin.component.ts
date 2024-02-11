@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TokenService } from 'src/app/core/services/token.service';
 import { jwtDecode } from 'jwt-decode';
 import { Role } from 'src/app/core/models/role';
+import { RouteService } from 'src/app/core/services/route.service';
 
 @Component({
   selector: 'app-auth-signin',
@@ -21,7 +22,7 @@ import { Role } from 'src/app/core/models/role';
 export default class AuthSigninComponent implements OnInit {
   loginForm: FormGroup;
   apiBaseUrl: string;
-  constructor(private apiService: ApiService , private alertService: AlertService , private tokenService:TokenService , private toastr : ToastrService , private router : Router) {
+  constructor(private routeService : RouteService ,  private apiService: ApiService , private alertService: AlertService , private tokenService:TokenService , private toastr : ToastrService , private router : Router) {
     this.apiBaseUrl = environment.apiBaseUrl;
     this.buildLoginForm();
     
@@ -54,8 +55,9 @@ export default class AuthSigninComponent implements OnInit {
         //console.log("role name :+++++++++++ " + role.name);
        // console.log(decoded); */
 
-       //window.sessionStorage.setItem("token", data.token);
-        this.router.navigate(["/"]) ; 
+       //window.localStorage.setItem("token", data.token);
+        this.routeService.setMainRoute() ; 
+        this.routeService.redirectToMainPage() ; 
       } , 
       error => {
           this.toastr.error(error.error);

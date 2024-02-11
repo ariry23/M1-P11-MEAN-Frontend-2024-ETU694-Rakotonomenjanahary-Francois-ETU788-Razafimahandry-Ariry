@@ -1,3 +1,1 @@
-export const apiConstant = {
-    userRegister : 'user/signup', 
-};
+export const PERSONNEL_LIST = 'personnel/list' ; 

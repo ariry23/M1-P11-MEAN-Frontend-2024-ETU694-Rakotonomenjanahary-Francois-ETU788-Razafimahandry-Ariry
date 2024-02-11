@@ -46,6 +46,35 @@ const navigationItems = [
       icon: 'feather icon-sidebar', 
       roles : ['customer'] , 
     },
+    {
+      id: 'profil-horaire',
+      title: 'Profil ',
+      type: 'item',
+      url: '/profil-horaire',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['employee'] , 
+    },
+    {
+      id: 'reservation-rendez-vous',
+      title: 'Liste des rendez vous',
+      type: 'item',
+      url: '/rendez-vous/liste',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['employee'] , 
+    },
+    {
+      id: 'Personnel',
+      title: 'gestion du personnel',
+      type: 'item',
+      url: '/personnel',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['admin'] , 
+    },
+    
+    
     
   
 ];

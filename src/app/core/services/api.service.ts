@@ -20,7 +20,7 @@ export class ApiService {
   }
 
   deleteData(url : string) : Observable<any> {
-    const headers = new HttpHeaders();
-    return this.http.delete<any>(url , {headers: headers});
+    //const headers = new HttpHeaders();
+    return this.http.delete<any>(url);
   }
 }

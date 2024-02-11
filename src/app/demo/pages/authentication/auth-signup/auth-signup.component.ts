@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { serviceConstant } from 'src/app/constants/service.constant';
 import { ApiService } from 'src/app/core/services/api.service';
-import { apiConstant } from 'src/app/constants/api.constant';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ToastrService } from 'ngx-toastr';
 

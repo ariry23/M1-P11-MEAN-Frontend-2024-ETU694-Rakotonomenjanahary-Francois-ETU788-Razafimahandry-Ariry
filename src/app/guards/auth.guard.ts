@@ -13,9 +13,12 @@ export class AuthGuard implements CanActivate , CanActivateChild {
     
   }
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    
     console.log("Auth guard check") ; 
+   
     if(this.tokenService.hasToken())
     {
+      
         return true ;
     }
     else{
@@ -25,6 +28,7 @@ export class AuthGuard implements CanActivate , CanActivateChild {
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     console.log("Auth guard check") ; 
+    
     if(this.tokenService.hasToken())
     {
         

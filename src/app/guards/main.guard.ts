@@ -13,24 +13,25 @@ export class MainGuard implements CanActivate , CanActivateChild {
     console.log("mandalo ato ve "); 
     if(this.tokenService.hasToken())
     {
-       
-        let decodedToken : any = jwtDecode(this.tokenService.getToken()) ; 
+        /*let decodedToken : any = jwtDecode(this.tokenService.getToken()) ; 
         let roleName : string = decodedToken.role.name ; 
         if(roleName === "customer")
         {
-            this.router.navigate(['/service/list']);
+            //this.router.navigate(['/service/list']);
             return true ;
         }
         else if(roleName === "employee"){
             this.router.navigate(['/profil-horaire']);
-            return true ;
+            return false ;
         }
         else{
-          return true ;
-        }
+          return false ;
+        } */
+        console.log("has token");
+        return true ; 
     }
     else{
-        console.log("ato") ; 
+      console.log("don't have token");
         this.router.navigate(['/auth/signin']);
         return false ; 
     }
@@ -48,8 +49,8 @@ export class MainGuard implements CanActivate , CanActivateChild {
             return true ;
         }
         else if(roleName === "employee"){
-            this.router.navigate(['/profil-horaire']);
-            return true ;
+            this.router.navigate(['profil/horaire']);
+            return false ;
         }
         else{
           return true ;

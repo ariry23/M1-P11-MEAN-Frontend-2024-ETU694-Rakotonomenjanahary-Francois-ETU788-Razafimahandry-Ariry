@@ -33,6 +33,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FooterComponent } from './demo/footer/footer.component';
 import { TokenService } from './core/services/token.service';
 import { NavigationInterceptor } from './core/interceptor/navigation.interceptor';
+import { BasePageComponent } from './demo/pages/base-page/base-page.component';
+import { MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { EditComponent } from './demo/ui-elements/modal/edit/edit.component' ; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +53,8 @@ import { NavigationInterceptor } from './core/interceptor/navigation.interceptor
     NavItemComponent,
     NavSearchComponent,
     ToggleFullScreenDirective,
+    BasePageComponent,
+    EditComponent
     
   ],
   imports: [
@@ -68,7 +73,7 @@ import { NavigationInterceptor } from './core/interceptor/navigation.interceptor
     FooterComponent , 
     ToastrModule.forRoot() ,  
   ],
-  providers: [NavigationItem ,  TokenService , NavigationInterceptor , 
+  providers: [NavigationItem ,  TokenService , NavigationInterceptor , MdbModalService , 
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

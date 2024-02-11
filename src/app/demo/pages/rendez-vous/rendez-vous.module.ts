@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RendezVousRoutingModule } from './rendez-vous-routing.module';
 
 
-
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule , 
     RendezVousRoutingModule
