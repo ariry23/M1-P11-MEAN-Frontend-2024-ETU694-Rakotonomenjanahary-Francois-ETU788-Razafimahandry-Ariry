@@ -1,0 +1,26 @@
+<div class="modal-header d-flex justify-content-center align-items-center">
+    <h5 class="modal-title" id="exampleModalLabel">Etes vous sure de suprimer ?</h5>
+    <!-- <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button> -->
+  </div>
+  <div class="modal-body d-flex justify-content-center align-items-center">
+    <form  [formGroup]="editForm" (onsubmit)="save()">
+        <div class="input-group mb-3">
+          <input formControlName="username" type="email" class="form-control" placeholder="Email" />
+        </div>
+        <div class="input-group mb-4">
+          <input formControlName="role.description" type="password" class="form-control" required placeholder="Password" />
+        </div>
+    </form>
+    
+  </div>
+  <div class="modal-footer d-flex justify-content-center align-items-center">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Non
+    </button>
+    <button type="button" class="btn btn-primary" (click)="save()">Oui</button>
+  </div>

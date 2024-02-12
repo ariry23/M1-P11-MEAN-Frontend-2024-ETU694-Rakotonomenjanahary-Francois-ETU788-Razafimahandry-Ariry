@@ -35,7 +35,6 @@ import { TokenService } from './core/services/token.service';
 import { NavigationInterceptor } from './core/interceptor/navigation.interceptor';
 import { BasePageComponent } from './demo/pages/base-page/base-page.component';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { EditComponent } from './demo/ui-elements/modal/edit/edit.component' ; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,9 +52,7 @@ import { EditComponent } from './demo/ui-elements/modal/edit/edit.component' ;
     NavItemComponent,
     NavSearchComponent,
     ToggleFullScreenDirective,
-    BasePageComponent,
-    EditComponent
-    
+    BasePageComponent
   ],
   imports: [
     MatDialogModule , 

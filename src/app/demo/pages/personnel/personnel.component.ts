@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { ApiService } from 'src/app/core/services/api.service';
 import DeleteConfirmationComponent from '../../ui-elements/modal/delete-confirmation/delete-confirmation.component';
+import { PersonnelEditPopupComponent } from './personnel-edit-popup/personnel-edit-popup.component';
 @Component({
   selector: 'app-personnel',
   templateUrl: './personnel.component.html',
@@ -16,7 +17,7 @@ import DeleteConfirmationComponent from '../../ui-elements/modal/delete-confirma
   imports: [MatIconModule , CommonModule] 
 })
 export default class PersonnelComponent implements OnInit {
-editModalRef: MdbModalRef<EditComponent> | null = null;
+editModalRef: MdbModalRef<PersonnelEditPopupComponent> | null = null;
 deleteModalRef: MdbModalRef<DeleteConfirmationComponent> | null = null;
 datas : any[] ; 
 constructor(private apiService : ApiService , private modalService: MdbModalService , private userService : UserService , private toastrService : ToastrService) {}
@@ -34,7 +35,9 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
     })
   }
   openEditModal() {
-    this.editModalRef = this.modalService.open(EditComponent) ; 
+    this.editModalRef = this.modalService.open(PersonnelEditPopupComponent , {data : {
+        modalData : "modalData"
+    }}) ; 
   }
 
   openDeleteModal() {
