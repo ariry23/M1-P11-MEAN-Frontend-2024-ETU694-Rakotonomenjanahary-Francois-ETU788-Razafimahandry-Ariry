@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import DeleteConfirmationComponent from '../delete-confirmation/delete-confirmation.component';
 import { ApiService } from 'src/app/core/services/api.service';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
@@ -16,7 +16,8 @@ import { FormGroup } from '@angular/forms';
   imports: [MatIconModule , CommonModule , MatDialogModule ]
 })
 export default class EditComponent implements OnInit {
-  modalData: any | null = null  ; 
+  @Output() editSuccess: EventEmitter<void> = new EventEmitter<void>();
+  data: any | null = null  ; 
   public editForm : FormGroup ; 
   constructor(public modalRef: MdbModalRef<EditComponent> , public apiService : ApiService , public toastrService : ToastrService ,  @Inject('apiUrl') public apiUrl: string)
   {
@@ -24,20 +25,23 @@ export default class EditComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    console.log(this.data); 
+    this.buildForm();
+  }
+  buildForm() : void{
+    throw new Error('Method not implemented.');
   }
 
   save() {
-    console.log(this.apiUrl) ;
-    console.log(this.editForm.value) ;
-   
-    /*this.apiService.deleteData("test").subscribe(
+    this.apiService.postData(this.apiUrl , this.editForm.value).subscribe(
       res => {
         this.modalRef.close();
+        this.editSuccess.emit();
       },
       err => {
           this.toastrService.error(err.message); 
       }
-    );*/
+    );
   }
 
 

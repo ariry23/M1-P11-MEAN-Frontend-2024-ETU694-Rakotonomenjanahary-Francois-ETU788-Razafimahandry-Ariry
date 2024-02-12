@@ -28,6 +28,7 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
 
   getData():void
   {
+    console.log('get data');
     this.userService.lisPersonnel().subscribe(data => {
       this.datas = data.personnelList;
     }, err => {
@@ -36,15 +37,23 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
   }
   openEditModal() {
     this.editModalRef = this.modalService.open(PersonnelEditPopupComponent , {data : {
-        modalData : "modalData"
+       data : "test data"
     }}) ; 
+
+
+    this.editModalRef.component.editSuccess.subscribe(() => {
+      this.getData(); 
+    });
+
   }
 
   openDeleteModal() {
     this.deleteModalRef = this.modalService.open(DeleteConfirmationComponent , {
       //modalClass : "modal-sm" , 
       data : {
-          apiUrl : 'testDelete' 
+          apiUrl : 'testDelete' ,
+          message : "another message" , 
+          icon : "<mat-icon>delete</mat-icon>"
       }
     }) ; 
   }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, Injectable, OnInit, Optional } from '@angular/core';
+import { Component, EventEmitter, Inject, Injectable, OnInit, Optional, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule  } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
@@ -19,24 +19,26 @@ import { ApiService } from 'src/app/core/services/api.service';
   providedIn: 'root'
 })
 export default class DeleteConfirmationComponent implements OnInit {
+  @Output() deleteSuccess: EventEmitter<void> = new EventEmitter<void>();
   apiUrl: string | null = null  ; 
+  message: string | null = null  ; 
+  icon: string | null = null  ;  
   constructor(public modalRef: MdbModalRef<DeleteConfirmationComponent> , private apiService : ApiService , private toastrService : ToastrService) {
-      //console.log(this.apiUrl) ; 
   }
   ngOnInit(): void {
-  //  console.log(this.data) ;
   console.log(this.apiUrl) ; 
   }
   
   delete() {
     console.log(this.apiUrl) ;
-    /*this.apiService.deleteData("test").subscribe(
+    this.apiService.deleteData(this.apiUrl).subscribe(
       res => {
         this.modalRef.close();
+        this.deleteSuccess.emit();
       },
       err => {
           this.toastrService.error(err.message); 
       }
-    );*/
+    );
   }
 }

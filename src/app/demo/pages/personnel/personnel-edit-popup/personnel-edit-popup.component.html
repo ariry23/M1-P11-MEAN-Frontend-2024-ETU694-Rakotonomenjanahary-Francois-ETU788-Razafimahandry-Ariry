@@ -12,9 +12,19 @@
         <div class="input-group mb-3">
           <input formControlName="username" type="email" class="form-control" placeholder="Email" />
         </div>
-        <div class="input-group mb-4">
-          <input formControlName="role.description" type="password" class="form-control" required placeholder="Password" />
-        </div>
+        <div formGroupName="role">
+          <div class="input-group mb-4">
+            <input formControlName="description" type="text" class="form-control" required placeholder="Password" />
+          </div>
+      </div>
+        <div formGroupName="role">
+          <div class="input-group mb-4">
+            <input formControlName="name" type="text" class="form-control" required placeholder="Password" />
+            
+          </div>
+      </div>
+
+      
     </form>
     
   </div>

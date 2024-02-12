@@ -1,5 +1,10 @@
 <div class="modal-header modal-header d-flex justify-content-center align-items-center">
-    <h5 class="modal-title" id="exampleModalLabel">Etes vous sure de suprimer ?</h5>
+    <h5 class="modal-title" id="exampleModalLabel" *ngIf="!message; else messageElse">Etes vous sure de suprimer ?</h5>
+    <ng-template #messageElse>
+      <!-- Template to render when !message -->
+      <h5 class="modal-title" id="exampleModalLabel">{{ message }}</h5>
+    </ng-template>
+    
     <!-- <button
       type="button"
       class="btn-close"
@@ -10,7 +15,7 @@
   <div class="modal-body d-flex justify-content-center align-items-center">
     
         <mat-icon>delete</mat-icon> <!-- Assuming you're using Angular Material icons -->
-        {{ apiUrl }}
+        
   </div>
   <div class="modal-footer d-flex justify-content-center align-items-center">
     <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
