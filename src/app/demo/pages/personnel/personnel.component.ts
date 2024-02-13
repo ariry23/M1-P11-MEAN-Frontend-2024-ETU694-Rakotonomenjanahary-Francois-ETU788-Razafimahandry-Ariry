@@ -30,14 +30,17 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
   {
     console.log('get data');
     this.userService.lisPersonnel().subscribe(data => {
-      this.datas = data.personnelList;
+    
+      this.datas = data.data;
     }, err => {
       this.toastrService.error(err) ; 
     })
   }
-  openEditModal() {
+  openEditModal(data) {
     this.editModalRef = this.modalService.open(PersonnelEditPopupComponent , {data : {
-       data : "test data"
+       data : {
+          formData : data
+       }
     }}) ; 
 
 

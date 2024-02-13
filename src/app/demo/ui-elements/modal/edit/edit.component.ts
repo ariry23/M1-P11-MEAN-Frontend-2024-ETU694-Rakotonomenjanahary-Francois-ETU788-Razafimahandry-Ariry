@@ -20,12 +20,10 @@ export default class EditComponent implements OnInit {
   data: any | null = null  ; 
   public editForm : FormGroup ; 
   constructor(public modalRef: MdbModalRef<EditComponent> , public apiService : ApiService , public toastrService : ToastrService ,  @Inject('apiUrl') public apiUrl: string)
-  {
-
-  }
+  {}
   
   ngOnInit(): void {
-    console.log(this.data); 
+    //console.log(this.data); 
     this.buildForm();
   }
   buildForm() : void{
@@ -33,7 +31,9 @@ export default class EditComponent implements OnInit {
   }
 
   save() {
-    this.apiService.postData(this.apiUrl , this.editForm.value).subscribe(
+    let editData = this.editForm.value ; 
+    editData = editData["_id"] = this.data._id ; 
+    this.apiService.postData(this.apiUrl , editData).subscribe(
       res => {
         this.modalRef.close();
         this.editSuccess.emit();

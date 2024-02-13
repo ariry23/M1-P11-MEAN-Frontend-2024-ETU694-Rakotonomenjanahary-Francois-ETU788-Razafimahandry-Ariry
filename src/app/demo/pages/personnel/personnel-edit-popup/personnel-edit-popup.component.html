@@ -1,5 +1,5 @@
 <div class="modal-header d-flex justify-content-center align-items-center">
-    <h5 class="modal-title" id="exampleModalLabel">Etes vous sure de suprimer ?</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Modification</h5>
     <!-- <button
       type="button"
       class="btn-close"
@@ -12,17 +12,10 @@
         <div class="input-group mb-3">
           <input formControlName="username" type="email" class="form-control" placeholder="Email" />
         </div>
-        <div formGroupName="role">
-          <div class="input-group mb-4">
-            <input formControlName="description" type="text" class="form-control" required placeholder="Password" />
-          </div>
-      </div>
-        <div formGroupName="role">
-          <div class="input-group mb-4">
-            <input formControlName="name" type="text" class="form-control" required placeholder="Password" />
-            
-          </div>
-      </div>
+       
+        <div class="input-group mb-3">
+          <input formControlName="email" type="email" class="form-control" placeholder="Email" />
+        </div>
 
       
     </form>
@@ -32,5 +25,5 @@
     <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
       Non
     </button>
-    <button type="button" class="btn btn-primary" (click)="save()">Oui</button>
+    <button [disabled]="editForm.invalid" type="button" class="btn btn-primary" (click)="save()">Oui</button>
   </div>
