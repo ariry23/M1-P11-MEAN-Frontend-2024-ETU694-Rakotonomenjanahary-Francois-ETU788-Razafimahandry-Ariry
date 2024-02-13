@@ -30,7 +30,6 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
   {
     console.log('get data');
     this.userService.lisPersonnel().subscribe(data => {
-    
       this.datas = data.data;
     }, err => {
       this.toastrService.error(err) ; 
@@ -42,8 +41,6 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
           formData : data
        }
     }}) ; 
-
-
     this.editModalRef.component.editSuccess.subscribe(() => {
       this.getData(); 
     });

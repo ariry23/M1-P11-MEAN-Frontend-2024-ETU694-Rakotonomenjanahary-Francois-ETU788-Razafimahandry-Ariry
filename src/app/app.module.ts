@@ -35,6 +35,7 @@ import { TokenService } from './core/services/token.service';
 import { NavigationInterceptor } from './core/interceptor/navigation.interceptor';
 import { BasePageComponent } from './demo/pages/base-page/base-page.component';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { AjoutPopupComponent } from './demo/pages/personnel/ajout-popup/ajout-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { MdbModalService } from 'mdb-angular-ui-kit/modal';
     NavItemComponent,
     NavSearchComponent,
     ToggleFullScreenDirective,
-    BasePageComponent
+    BasePageComponent,
+    AjoutPopupComponent
   ],
   imports: [
     MatDialogModule , 
