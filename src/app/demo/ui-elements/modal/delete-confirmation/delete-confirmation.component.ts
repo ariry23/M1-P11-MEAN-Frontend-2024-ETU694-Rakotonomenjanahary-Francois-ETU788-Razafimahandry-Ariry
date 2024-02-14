@@ -26,11 +26,10 @@ export default class DeleteConfirmationComponent implements OnInit {
   constructor(public modalRef: MdbModalRef<DeleteConfirmationComponent> , private apiService : ApiService , private toastrService : ToastrService) {
   }
   ngOnInit(): void {
-  console.log(this.apiUrl) ; 
+  
   }
   
   delete() {
-    console.log(this.apiUrl) ;
     this.apiService.deleteData(this.apiUrl).subscribe(
       res => {
         this.modalRef.close();

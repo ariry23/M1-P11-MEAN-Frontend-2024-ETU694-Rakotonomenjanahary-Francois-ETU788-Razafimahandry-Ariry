@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from 'src/app/core/services/api.service';
 import DeleteConfirmationComponent from '../../ui-elements/modal/delete-confirmation/delete-confirmation.component';
 import { PersonnelEditPopupComponent } from './personnel-edit-popup/personnel-edit-popup.component';
+import { AjoutPopupComponent } from './ajout-popup/ajout-popup.component';
+import { PERSONNEL_DELETE } from 'src/app/constants/api.constant';
 @Component({
   selector: 'app-personnel',
   templateUrl: './personnel.component.html',
@@ -19,11 +21,11 @@ import { PersonnelEditPopupComponent } from './personnel-edit-popup/personnel-ed
 export default class PersonnelComponent implements OnInit {
 editModalRef: MdbModalRef<PersonnelEditPopupComponent> | null = null;
 deleteModalRef: MdbModalRef<DeleteConfirmationComponent> | null = null;
+ajoutModalRef: MdbModalRef<AjoutPopupComponent> | null = null;  
 datas : any[] ; 
 constructor(private apiService : ApiService , private modalService: MdbModalService , private userService : UserService , private toastrService : ToastrService) {}
   ngOnInit(): void {
       this.getData();
-      
   }
 
   getData():void
@@ -44,18 +46,27 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
     this.editModalRef.component.editSuccess.subscribe(() => {
       this.getData(); 
     });
-
   }
 
-  openDeleteModal() {
+  openAjoutModal() {
+    this.ajoutModalRef = this.modalService.open(AjoutPopupComponent ) ; 
+    this.ajoutModalRef.component.ajoutSuccess.subscribe(() => {
+      this.getData(); 
+    });
+  }
+
+  openDeleteModal(id : any) {
     this.deleteModalRef = this.modalService.open(DeleteConfirmationComponent , {
       //modalClass : "modal-sm" , 
       data : {
-          apiUrl : 'testDelete' ,
+          apiUrl : PERSONNEL_DELETE + '/' + id,
           message : "another message" , 
           icon : "<mat-icon>delete</mat-icon>"
       }
     }) ; 
+    this.deleteModalRef.component.deleteSuccess.subscribe(() => {
+      this.getData(); 
+    });
   }
 
 

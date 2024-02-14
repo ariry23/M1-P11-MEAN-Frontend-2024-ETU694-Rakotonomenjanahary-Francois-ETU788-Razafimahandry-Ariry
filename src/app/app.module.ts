@@ -36,6 +36,8 @@ import { NavigationInterceptor } from './core/interceptor/navigation.interceptor
 import { BasePageComponent } from './demo/pages/base-page/base-page.component';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { AjoutPopupComponent } from './demo/pages/personnel/ajout-popup/ajout-popup.component';
+import { AjoutComponent } from './demo/ui-elements/modal/ajout/ajout.component';
+import { ListBasePageComponent } from './demo/ui-elements/page/list-base-page/list-base-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,7 @@ import { AjoutPopupComponent } from './demo/pages/personnel/ajout-popup/ajout-po
     NavSearchComponent,
     ToggleFullScreenDirective,
     BasePageComponent,
-    AjoutPopupComponent
+    ListBasePageComponent,
   ],
   imports: [
     MatDialogModule , 

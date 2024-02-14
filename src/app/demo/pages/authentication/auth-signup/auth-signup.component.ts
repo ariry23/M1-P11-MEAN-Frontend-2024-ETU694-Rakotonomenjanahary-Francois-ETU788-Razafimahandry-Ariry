@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { serviceConstant } from 'src/app/constants/service.constant';
+import { PASSWORD_REGEX } from 'src/app/constants/service.constant';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ToastrService } from 'ngx-toastr';
@@ -29,8 +29,8 @@ export default class AuthSignupComponent implements OnInit {
         {
           username: new FormControl('', Validators.required),
           email: new FormControl('', [Validators.required , Validators.email]),
-          password: new FormControl('', [Validators.required , Validators.pattern(serviceConstant.passwordRegex)]),
-          confirmPassword: new FormControl('', [Validators.required , Validators.pattern(serviceConstant.passwordRegex)]) 
+          password: new FormControl('', [Validators.required , Validators.pattern(PASSWORD_REGEX)]),
+          confirmPassword: new FormControl('', [Validators.required , Validators.pattern(PASSWORD_REGEX)]) 
         }
       )
   }

@@ -3,7 +3,7 @@
   </div> -->
   
   <div class = "row">
-    <button type="button" class="btn btn-primary float-left new-button">Nouveau</button>
+    <button type="button" (click)="openAjoutModal()" class="btn btn-primary float-left new-button">Nouveau</button>
   </div>
   <div class="row">
       <div class="col-xl-12">
@@ -23,7 +23,7 @@
                     <td>{{ data.email }}</td>
                     <td>
                       <mat-icon (click)="openEditModal(data)">edit</mat-icon> 	
-                      <mat-icon (click)="openDeleteModal()">delete</mat-icon> 
+                      <mat-icon (click)="openDeleteModal(data._id)">delete</mat-icon> 
                     </td>
                   </tr>
                   
