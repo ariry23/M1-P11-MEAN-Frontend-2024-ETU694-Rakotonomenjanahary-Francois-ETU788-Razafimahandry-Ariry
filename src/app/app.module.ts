@@ -56,7 +56,6 @@ import { ListBasePageComponent } from './demo/ui-elements/page/list-base-page/li
     NavSearchComponent,
     ToggleFullScreenDirective,
     BasePageComponent,
-    ListBasePageComponent,
   ],
   imports: [
     MatDialogModule , 
