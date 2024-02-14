@@ -16,7 +16,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 })
 export abstract class AjoutComponent {
   @Output() ajoutSuccess: EventEmitter<void> = new EventEmitter<void>();
-  public ajoutForm : FormGroup ; 
+  public form : FormGroup ; 
   constructor(public modalRef: MdbModalRef<AjoutComponent> , public apiService : ApiService , public toastrService : ToastrService ,  @Inject('apiUrl') public apiUrl: string)
   {}
   
@@ -26,8 +26,7 @@ export abstract class AjoutComponent {
   abstract buildForm():void ;
 
   save() {
-    let ajoutData = this.ajoutForm.value ; 
-    this.apiService.postData(this.apiUrl , this.ajoutForm.value).subscribe(
+    this.apiService.postData(this.apiUrl , this.form.value).subscribe(
       res => {
         this.modalRef.close();
         this.ajoutSuccess.emit();

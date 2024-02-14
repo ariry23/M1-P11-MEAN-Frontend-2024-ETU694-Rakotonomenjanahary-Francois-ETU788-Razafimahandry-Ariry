@@ -23,22 +23,21 @@ export class PersonnelEditPopupComponent extends EditComponent {
   }
   
   override buildForm(): void {
-  
-    let formDatas = this.data.formData ; 
+    let formData = this.data ; 
     this.editForm = new FormGroup({
-      username: new FormControl(formDatas.username , Validators.required),
-      email : new FormControl(formDatas.email , [Validators.required , Validators.email] ) 
+      username: new FormControl(formData.username , Validators.required),
+      email : new FormControl(formData.email , [Validators.required , Validators.email] ) 
     });
   }
 
 
   override save() {
-    let editData = { ...this.data.formData };
+    let editData = { ...this.data };
     editData["username"] = this.editForm.value.username ;
     editData["email"] = this.editForm.value.email ;
-    if (!(JSON.stringify(editData) === JSON.stringify(this.data.formData)))
+    if (!(JSON.stringify(editData) === JSON.stringify(this.data)))
     {
-      console.log(editData) ; 
+     // console.log(editData) ; 
       this.userService.updatePersonnel(editData).subscribe(
         res => {
           this.modalRef.close();

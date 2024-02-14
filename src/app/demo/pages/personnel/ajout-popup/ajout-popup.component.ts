@@ -24,8 +24,8 @@ export class AjoutPopupComponent extends AjoutComponent {
   }
   
   override buildForm(): void {
-    this.ajoutForm = new FormGroup({
-        username: new FormControl('', Validators.required),
+    this.form = new FormGroup({
+          username: new FormControl('', Validators.required),
           email: new FormControl('', [Validators.required , Validators.email]),
           password: new FormControl('', [Validators.required , Validators.pattern(PASSWORD_REGEX)]),
           confirmPassword: new FormControl('', [Validators.required , Validators.pattern(PASSWORD_REGEX)]) 

@@ -8,7 +8,7 @@
     ></button> -->
   </div>
   <div class="modal-body d-flex justify-content-center align-items-center">
-    <form  [formGroup]="ajoutForm" (onsubmit)="save()">
+    <form  [formGroup]="form" (onsubmit)="save()">
         <div class="input-group mb-3">
           <input formControlName="username" type="email" class="form-control" placeholder="UserName" />
         </div>
@@ -29,5 +29,5 @@
     <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
       Annuler
     </button>
-    <button [disabled]="ajoutForm.invalid" type="button" class="btn btn-primary" (click)="save()">Valider</button>
+    <button [disabled]="form.invalid" type="button" class="btn btn-primary" (click)="save()">Valider</button>
   </div>

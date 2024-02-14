@@ -20,17 +20,15 @@ import { ApiService } from 'src/app/core/services/api.service';
 })
 export default class DeleteConfirmationComponent implements OnInit {
   @Output() deleteSuccess: EventEmitter<void> = new EventEmitter<void>();
-  apiUrl: string | null = null  ; 
-  message: string | null = null  ; 
-  icon: string | null = null  ;  
+  data: any | null = null  ; 
   constructor(public modalRef: MdbModalRef<DeleteConfirmationComponent> , private apiService : ApiService , private toastrService : ToastrService) {
   }
   ngOnInit(): void {
-  
+    //console.log(this.data) ; 
   }
   
   delete() {
-    this.apiService.deleteData(this.apiUrl).subscribe(
+    this.apiService.deleteData(this.data.apiUrl).subscribe(
       res => {
         this.modalRef.close();
         this.deleteSuccess.emit();

@@ -15,7 +15,7 @@ import { FormGroup } from '@angular/forms';
   standalone: true , 
   imports: [MatIconModule , CommonModule , MatDialogModule ]
 })
-export default class EditComponent implements OnInit {
+export default abstract class EditComponent implements OnInit {
   @Output() editSuccess: EventEmitter<void> = new EventEmitter<void>();
   data: any | null = null  ; 
   public editForm : FormGroup ; 
@@ -23,12 +23,10 @@ export default class EditComponent implements OnInit {
   {}
   
   ngOnInit(): void {
-    //console.log(this.data); 
+    console.log(this.data); 
     this.buildForm();
   }
-  buildForm() : void{
-    throw new Error('Method not implemented.');
-  }
+  abstract buildForm() : void
 
   save() {
     let editData = this.editForm.value ; 

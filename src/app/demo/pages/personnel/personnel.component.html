@@ -18,12 +18,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let data of datas">
+                  <tr *ngFor="let data of data">
                     <th scope="row">{{ data.username }}</th>
                     <td>{{ data.email }}</td>
                     <td>
                       <mat-icon (click)="openEditModal(data)">edit</mat-icon> 	
-                      <mat-icon (click)="openDeleteModal(data._id)">delete</mat-icon> 
+                      <mat-icon (click)="openDeleteModal(data._id , 12)">delete</mat-icon> 
                     </td>
                   </tr>
                   

@@ -10,7 +10,8 @@ import { ApiService } from 'src/app/core/services/api.service';
 import DeleteConfirmationComponent from '../../ui-elements/modal/delete-confirmation/delete-confirmation.component';
 import { PersonnelEditPopupComponent } from './personnel-edit-popup/personnel-edit-popup.component';
 import { AjoutPopupComponent } from './ajout-popup/ajout-popup.component';
-import { PERSONNEL_DELETE } from 'src/app/constants/api.constant';
+import { PERSONNEL_AJOUT, PERSONNEL_DELETE, PERSONNEL_LIST, PERSONNEL_UPDATE } from 'src/app/constants/api.constant';
+import { ListBasePageComponent } from '../../ui-elements/page/list-base-page/list-base-page.component';
 @Component({
   selector: 'app-personnel',
   templateUrl: './personnel.component.html',
@@ -18,8 +19,37 @@ import { PERSONNEL_DELETE } from 'src/app/constants/api.constant';
   standalone: true,
   imports: [MatIconModule , CommonModule] 
 })
-export default class PersonnelComponent implements OnInit {
-editModalRef: MdbModalRef<PersonnelEditPopupComponent> | null = null;
+export default class PersonnelComponent extends ListBasePageComponent {
+  constructor(public override apiService: ApiService , public override modalService : MdbModalService ,  
+    public override toastrService : ToastrService
+    ){
+    super(apiService ,  modalService  ,  
+      toastrService , 
+      PERSONNEL_LIST , 
+      PERSONNEL_DELETE , 
+      DeleteConfirmationComponent   , 
+      PersonnelEditPopupComponent  , 
+      AjoutPopupComponent);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*editModalRef: MdbModalRef<PersonnelEditPopupComponent> | null = null;
 deleteModalRef: MdbModalRef<DeleteConfirmationComponent> | null = null;
 ajoutModalRef: MdbModalRef<AjoutPopupComponent> | null = null;  
 datas : any[] ; 
@@ -70,6 +100,6 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
   }
 
 
-
+*/
 
 }

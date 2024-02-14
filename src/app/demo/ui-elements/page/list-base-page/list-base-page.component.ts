@@ -10,14 +10,14 @@ import { ApiService } from 'src/app/core/services/api.service';
   
 })
 export abstract class ListBasePageComponent implements OnInit {
-  
 editModalRef: MdbModalRef<any> | null = null;
 deleteModalRef: MdbModalRef<any> | null = null;
 ajoutModalRef: MdbModalRef<any> | null = null;  
   data : any[] ; 
   constructor(public apiService: ApiService , public modalService : MdbModalService ,  
   public toastrService : ToastrService , @Inject('apiUrl') public apiUrl: string , 
-  @Inject('deleteComponent') public deleteComponent : any  , 
+  @Inject('deleteApiUrl') public deleteApiUrl: string ,
+  @Inject('deleteComponent') public deleteComponent : any , 
   @Inject('updateApiUrl') public updateComponent : any , 
   @Inject('addApiUrl') public addComponent :any 
     /*
@@ -30,16 +30,14 @@ ajoutModalRef: MdbModalRef<any> | null = null;
 
 getData():void
 {
-  this.apiService.getData(this.apiUrl).subscribe(data => {
-    this.data = data ; 
+  this.apiService.getData(this.apiUrl).subscribe(datas => {
+    this.data = datas.data ; 
   }, err => {
     this.toastrService.error(err) ; 
   })
 }
 openEditModal(data: any) {
-  this.editModalRef = this.modalService.open(this.updateComponent , {data : {
-     data : data
-  }}) ; 
+  this.editModalRef = this.modalService.open(this.updateComponent , {data : {data:data}}) ; 
   this.editModalRef.component.editSuccess.subscribe(() => {
     this.getData(); 
   });
@@ -52,9 +50,14 @@ openAjoutModal() {
   });
 }
 
-openDeleteModal(data:any) {
+openDeleteModal(id: any , data?: any) {
   this.deleteModalRef = this.modalService.open(this.deleteComponent , {
-    data : data
+    data : {
+        data : {
+          apiUrl : this.deleteApiUrl + "/" +  id , 
+          data : data !== null && data !== undefined ? data : null  
+        }
+    }
   }) ; 
   this.deleteModalRef.component.deleteSuccess.subscribe(() => {
     this.getData(); 
