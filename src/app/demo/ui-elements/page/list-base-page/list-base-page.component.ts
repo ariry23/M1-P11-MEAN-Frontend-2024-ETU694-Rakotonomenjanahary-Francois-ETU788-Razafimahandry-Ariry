@@ -15,7 +15,8 @@ editModalRef: MdbModalRef<any> | null = null;
 deleteModalRef: MdbModalRef<any> | null = null;
 ajoutModalRef: MdbModalRef<any> | null = null;  
   data : any[] ; 
-  constructor(public apiService: ApiService , public modalService : MdbModalService ,  public toastrService : ToastrService , @Inject('apiUrl') public apiUrl: string , 
+  constructor(public apiService: ApiService , public modalService : MdbModalService ,  
+  public toastrService : ToastrService , @Inject('apiUrl') public apiUrl: string , 
   @Inject('deleteComponent') public deleteComponent : any  , 
   @Inject('updateApiUrl') public updateComponent : any , 
   @Inject('addApiUrl') public addComponent :any 
