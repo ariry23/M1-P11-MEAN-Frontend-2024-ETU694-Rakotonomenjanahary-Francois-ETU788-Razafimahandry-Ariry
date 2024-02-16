@@ -73,6 +73,15 @@ const navigationItems = [
       icon: 'feather icon-sidebar', 
       roles : ['admin'] , 
     },
+    {
+      id: 'gestion-service',
+      title: 'Gestion des services',
+      type: 'item',
+      url: '/service/management',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['admin'] , 
+    },
     
     
     

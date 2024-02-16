@@ -1,0 +1,33 @@
+<div class="modal-header d-flex justify-content-center align-items-center">
+    <h5 class="modal-title" id="exampleModalLabel">Nouveau service</h5>
+    <!-- <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button> -->
+  </div>
+  <div class="modal-body d-flex justify-content-center align-items-center">
+    <form  [formGroup]="form" (onsubmit)="save()">
+        <div class="input-group mb-3">
+          <input formControlName="nom" type="email" class="form-control" placeholder="Nom" />
+        </div>
+       
+        <div class="input-group mb-3">
+          <input formControlName="prix" type="number" class="form-control" placeholder="Prix" />
+        </div>
+        <div class="input-group mb-3">
+            <input formControlName="commission" type="number" class="form-control" placeholder="Commission" />
+          </div>
+          <div class="input-group mb-3">
+            <input formControlName="duree" type="number" class="form-control" placeholder="Duree"/>
+          </div>
+    </form>
+    
+  </div>
+  <div class="modal-footer d-flex justify-content-center align-items-center">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Annuler
+    </button>
+    <button [disabled]="form.invalid" type="button" class="btn btn-primary" (click)="save()">Valider</button>
+  </div>

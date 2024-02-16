@@ -1,8 +1,5 @@
-<!--<div class="row">
-    <h2 class="text-center text-decoration-underline">Nos tarifs</h2>
-  </div> -->
-  
-  <div class = "row">
+
+<div class = "row">
     <button type="button" (click)="openAjoutModal()" class="btn btn-primary float-left new-button btn-sm">Nouveau</button>
   </div>
   <div class="row">
@@ -13,14 +10,18 @@
                 <thead>
                   <tr>
                     <th>Nom</th>
-                    <th>Email</th>
+                    <th>Prix</th>
+                    <th>Durée</th>
+                    <th>Comission</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let data of data">
-                    <th scope="row">{{ data.username }}</th>
-                    <td>{{ data.email }}</td>
+                    <th scope="row">{{ data.nom }}</th>
+                    <th scope="row">{{ data.prix }}</th>
+                    <th scope="row">{{ data.duree }}</th>
+                    <th scope="row">{{ data.commission }}</th>
                     <td>
                       <mat-icon (click)="openEditModal(data)">edit</mat-icon> 	
                       <mat-icon (click)="openDeleteModal(data._id , 12)">delete</mat-icon> 
