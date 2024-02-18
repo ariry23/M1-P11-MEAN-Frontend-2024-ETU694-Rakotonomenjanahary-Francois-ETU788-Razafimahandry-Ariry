@@ -1,5 +1,5 @@
 // angular import
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // project import
@@ -23,6 +23,10 @@ import {
   ApexTitleSubtitle,
   ApexGrid,
 } from 'ng-apexcharts';
+
+import { ApiService } from 'src/app/core/services/api.service';
+import { CHIFFRES_PER_DAY, CHIFFRES_PER_MONTH, CA_PER_DAY, CA_PER_MONTH } from 'src/app/constants/api.constant';
+import { ToastrService } from 'ngx-toastr';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | ApexNonAxisChartSeries;
@@ -49,29 +53,40 @@ export type ChartOptions = {
   templateUrl: './apex-chart.component.html',
   styleUrls: ['./apex-chart.component.scss'],
 })
-export default class ApexChartComponent {
+export default class ApexChartComponent  implements OnInit{
   @ViewChild('chart') chart: ChartComponent;
   barSimpleChart: Partial<ChartOptions>;
+  barSimpleChartPerMonth: Partial<ChartOptions>;
   barStackedChart: Partial<ChartOptions>;
   areaAngleChart: Partial<ChartOptions>;
   areaSmoothChart: Partial<ChartOptions>;
   lineAreaChart: Partial<ChartOptions>;
   donutChart: Partial<ChartOptions>;
 
-  constructor() {
+  data: any;
+  dataResaPerMonth: any ;
+  dataCAPerDAy: any;
+  dataCAPerMonth: any;
+
+
+  series =  [];
+  categories = [];
+
+  seriesResaPerMonth =  [];
+  categoriesResaPerMonth = [];
+
+  seriesCA =  [];
+  categoriesCA = [];
+
+  seriesCAMonth =  [];
+  categoriesCAMonth = [];
+
+  constructor(private apiService: ApiService, private toastrService: ToastrService) {
     this.barSimpleChart = {
       series: [
         {
-          name: 'Net Profit',
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
-        },
-        {
-          name: 'Revenue',
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
-        },
-        {
-          name: 'Free Cash Flow',
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
+          name: 'Nombre ',
+          data: this.series,
         },
       ],
       chart: {
@@ -94,21 +109,58 @@ export default class ApexChartComponent {
         colors: ['transparent'],
       },
       xaxis: {
-        categories: [
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'Sep',
-          'Oct',
-        ],
+        categories: this.categories,
       },
       yaxis: {
         title: {
-          text: '$ (thousands)',
+          text: 'Nombre de reservation par Jour',
+        },
+      },
+      fill: {
+        opacity: 1,
+      },
+      colors:['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0'],
+      tooltip: {
+        y: {
+          formatter: function (val) {
+            return ''+ val;
+          },
+        },
+      },
+    };
+
+    this.barSimpleChartPerMonth = {
+      series: [
+        {
+          name: 'Nombre ',
+          data: this.seriesResaPerMonth,
+        },
+      ],
+      chart: {
+        type: 'bar',
+        height: 350,
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          // endingShape: "rounded"
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent'],
+      },
+      xaxis: {
+        categories: this.categoriesResaPerMonth,
+      },
+      yaxis: {
+        title: {
+          text: 'Nombre de reservation par mois',
         },
       },
       fill: {
@@ -117,65 +169,56 @@ export default class ApexChartComponent {
       tooltip: {
         y: {
           formatter: function (val) {
-            return '$ ' + val + ' thousands';
+            return ''+ val;
           },
         },
       },
     };
-    this.barStackedChart = {
-      series: [
-        {
-          name: 'PRODUCT A',
-          data: [44, 55, 41, 67, 22, 43, 21, 49],
-        },
-        {
-          name: 'PRODUCT B',
-          data: [13, 23, 20, 8, 13, 27, 33, 12],
-        },
-        {
-          name: 'PRODUCT C',
-          data: [11, 17, 15, 15, 21, 14, 15, 13],
-        },
-      ],
-      chart: {
-        type: 'bar',
-        height: 350,
-        stacked: true,
-        stackType: '100%',
-      },
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0,
-            },
-          },
-        },
-      ],
-      xaxis: {
-        categories: [
-          '2011 Q1',
-          '2011 Q2',
-          '2011 Q3',
-          '2011 Q4',
-          '2012 Q1',
-          '2012 Q2',
-          '2012 Q3',
-          '2012 Q4',
-        ],
-      },
-      fill: {
-        opacity: 1,
-      },
-      legend: {
-        position: 'right',
-        offsetX: 0,
-        offsetY: 50,
-      },
-    };
+    // this.barStackedChart = {
+    //   series: [
+    //     {
+    //       name: 'PRODUCT A',
+    //       data: [44, 55, 41, 67, 22, 43, 21, 49],
+    //     },
+    //     // {
+    //     //   name: 'PRODUCT B',
+    //     //   data: [13, 23, 20, 8, 13, 27, 33, 12],
+    //     // },
+    //     // {
+    //     //   name: 'PRODUCT C',
+    //     //   data: [11, 17, 15, 15, 21, 14, 15, 13],
+    //     // },
+    //   ],
+    //   chart: {
+    //     type: 'bar',
+    //     height: 350,
+    //     stacked: true,
+    //     stackType: '100%',
+    //   },
+    //   responsive: [
+    //     {
+    //       breakpoint: 480,
+    //       options: {
+    //         legend: {
+    //           position: 'bottom',
+    //           offsetX: -10,
+    //           offsetY: 0,
+    //         },
+    //       },
+    //     },
+    //   ],
+    //   xaxis: {
+    //     categories: this.categoriesResaPerMonth,
+    //   },
+    //   fill: {
+    //     opacity: 1,
+    //   },
+    //   legend: {
+    //     position: 'right',
+    //     offsetX: 0,
+    //     offsetY: 50,
+    //   },
+    // };
     this.areaAngleChart = {
       chart: {
         height: 380,
@@ -188,25 +231,33 @@ export default class ApexChartComponent {
       series: [
         {
           name: 'Music',
-          data: [11, 15, 26, 20, 33, 27],
+          data: this.seriesResaPerMonth,
         },
-        {
-          name: 'Photos',
-          data: [32, 33, 21, 42, 19, 32],
-        },
+        // {
+        //   name: 'Photos',
+        //   data: [32, 33, 21, 42, 19, 32],
+        // },
       ],
       xaxis: {
-        categories: [
-          '2011 Q1',
-          '2011 Q2',
-          '2011 Q3',
-          '2011 Q4',
-          '2012 Q1',
-          '2012 Q2',
-        ],
+        type:'category',
+        categories: this.categories,
+        // [
+        //   '2011 Q1',
+        //   '2011 Q2',
+        //   '2011 Q3',
+        //   '2011 Q4',
+        //   '2012 Q1',
+        //   '2012 Q2',
+        // ],
       },
       tooltip: {
         followCursor: true,
+          x: {
+            formatter: function (val) {
+              return ''+ val;
+            },
+          },
+        
       },
       fill: {
         opacity: 1,
@@ -216,12 +267,12 @@ export default class ApexChartComponent {
       series: [
         {
           name: 'series1',
-          data: [31, 40, 28, 51, 42, 109, 100],
+          data: this.seriesCA
         },
-        {
-          name: 'series2',
-          data: [11, 32, 45, 32, 34, 52, 41],
-        },
+        // {
+        //   name: 'series2',
+        //   data: [11, 32, 45, 32, 34, 52, 41],
+        // },
       ],
       chart: {
         height: 350,
@@ -235,15 +286,16 @@ export default class ApexChartComponent {
       },
       xaxis: {
         type: 'datetime',
-        categories: [
-          '2018-09-19T00:00:00.000Z',
-          '2018-09-19T01:30:00.000Z',
-          '2018-09-19T02:30:00.000Z',
-          '2018-09-19T03:30:00.000Z',
-          '2018-09-19T04:30:00.000Z',
-          '2018-09-19T05:30:00.000Z',
-          '2018-09-19T06:30:00.000Z',
-        ],
+        categories: this.categoriesCA,
+        // [
+        //   '2018-09-19T00:00:00.000Z',
+        //   '2018-09-19T01:30:00.000Z',
+        //   '2018-09-19T02:30:00.000Z',
+        //   '2018-09-19T03:30:00.000Z',
+        //   '2018-09-19T04:30:00.000Z',
+        //   '2018-09-19T05:30:00.000Z',
+        //   '2018-09-19T06:30:00.000Z',
+        // ],
       },
       tooltip: {
         x: {
@@ -308,18 +360,69 @@ export default class ApexChartComponent {
         },
       },
       colors: ['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0'],
-      series: [21, 23, 19, 14, 6],
-      labels: [
-        'Clothing',
-        'Food Products',
-        'Electronics',
-        'Kitchen Utility',
-        'Gardening',
-      ],
+      series: this.seriesCAMonth,
+      labels: this.categoriesCAMonth,
       legend: {
         position: 'left',
         offsetY: 80,
       },
     };
+    
+  }
+
+  ngOnInit(): void {
+    this.getDataResaPerMonth();
+    this.getDataResaPerDay();
+    this.getDataCAPerDay();
+    this.getDataCAPerMonth();
+  }
+
+  getDataResaPerDay():void{
+    this.apiService.getData(CHIFFRES_PER_DAY).subscribe(datas => {
+      this.data = datas.result;
+      this.data.forEach(dt => {
+        this.categories.push(dt._id);
+        this.series.push(dt.numberResa);
+      });
+      
+    }, err => {
+      this.toastrService.error(err);
+    })
+  }
+
+  getDataResaPerMonth():void{
+    this.apiService.getData(CHIFFRES_PER_MONTH).subscribe(datas => {
+      this.dataResaPerMonth = datas.result;
+      this.dataResaPerMonth.forEach(dt => {
+        this.categoriesResaPerMonth.push(dt._id);
+        this.seriesResaPerMonth.push(dt.numberResa);
+      });
+    }, err => {
+      this.toastrService.error(err);
+    })
+  }
+
+  getDataCAPerDay():void{
+    this.apiService.getData(CA_PER_DAY).subscribe(datas => {
+      this.dataCAPerDAy = datas.result;
+      this.dataCAPerDAy.forEach(dt => {
+        this.categoriesCA.push(dt._id);
+        this.seriesCA.push(dt.CA);
+      });
+    }, err => {
+      this.toastrService.error(err);
+    })
+  }
+
+  getDataCAPerMonth():void{
+    this.apiService.getData(CA_PER_MONTH).subscribe(datas => {
+      this.dataCAPerMonth = datas.result;
+      this.dataCAPerMonth.forEach(dt => {
+        this.categoriesCAMonth.push(dt._id);
+        this.seriesCAMonth.push(dt.CA);
+      });
+    }, err => {
+      this.toastrService.error(err);
+    })
   }
 }

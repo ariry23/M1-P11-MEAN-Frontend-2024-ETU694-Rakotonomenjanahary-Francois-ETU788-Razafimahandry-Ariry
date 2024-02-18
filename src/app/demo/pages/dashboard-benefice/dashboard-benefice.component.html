@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-12 row">
+        <div class="card">
+            <div class="card-body text-center row">
+                <div class="mb-4">
+                    <i class="feather icon-search-plus "></i>
+                </div>
+                <h3 class="mb-4">Liste des depenses</h3>
+
+                <form [formGroup]="calculateForm" (onsubmit)="caculateBenefice()">
+                    <div class="form-group row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5  mb-3" align="left">
+                            <label for="text" class="col-4 col-form-label">Salaire</label>
+                            <input formControlName="salaire" type="number" class="form-control" placeholder="Salaire"
+                                min="0" value="0" />
+                        </div>
+                        <div class="col-md-5  mb-3" align="left">
+                            <label for="text" class="col-4 col-form-label">Loyer</label>
+                            <input formControlName="loyer" type="number" class="form-control" placeholder="Loyer"
+                                min="0" value="0" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5 mb-4" align="left">
+                            <label for="text" class="col-4 col-form-label">Achat pièce</label>
+                            <input formControlName="piece" type="number" class="form-control" placeholder="Achat pièce"
+                                min="0" value="0" />
+                        </div>
+                        <div class="col-md-5 mb-4" align="left">
+                            <label for="text" class="col-4 col-form-label">Autres dépenses</label>
+                            <input formControlName="divers" type="number" class="form-control"
+                                placeholder="Autres dépenses" min="0" value="0" />
+                        </div>
+                    </div>
+
+
+                    <button type="submit" (click)="caculateBenefice()"
+                        class="btn btn-primary shadow-2 mb-4">Calculer</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="col-md-12 row " align="center">
+            <div class="col-md-6">
+                <app-card cardTitle="Benefice par mois" [options]="false">
+                    <apx-chart [series]="barSimpleChart.series" [chart]="barSimpleChart.chart"
+                        [dataLabels]="barSimpleChart.dataLabels" [plotOptions]="barSimpleChart.plotOptions"
+                        [yaxis]="barSimpleChart.yaxis" [legend]="barSimpleChart.legend" [fill]="barSimpleChart.fill"
+                        [stroke]="barSimpleChart.stroke" [tooltip]="barSimpleChart.tooltip"
+                        [xaxis]="barSimpleChart.xaxis"></apx-chart>
+                </app-card>
+            </div>
+
+            <div class="col-md-6">
+                <app-card cardTitle="Benefice par mois" [options]="false">
+                    <apx-chart [series]="donutChart.series" [chart]="donutChart.chart" [labels]="donutChart.labels"
+                        [colors]="donutChart.colors" [legend]="donutChart.legend" [dataLabels]="donutChart.dataLabels"
+                        [plotOptions]="donutChart.plotOptions"></apx-chart>
+                </app-card>
+            </div>
+        </div>
+    </div>
+</div>

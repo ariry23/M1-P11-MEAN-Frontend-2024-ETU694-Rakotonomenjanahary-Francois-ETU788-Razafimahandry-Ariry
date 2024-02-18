@@ -73,7 +73,24 @@ const navigationItems = [
       icon: 'feather icon-sidebar', 
       roles : ['admin'] , 
     },
-    
+    {
+      id: 'dashboard',
+      title: 'Dashboard',
+      type: 'item',
+      url: '/dashboard',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['admin'] , 
+    },
+    {
+      id: 'dashboard-benefice',
+      title: 'Dashboard Benefice',
+      type: 'item',
+      url: '/dashboard-benefice',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['admin'] , 
+    },
     
     
   

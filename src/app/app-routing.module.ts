@@ -52,7 +52,17 @@ const routes : Routes = [
         canActivate: [AdminGuard] , 
         loadComponent: () =>
           import('./demo/pages/personnel/personnel.component')
-      }
+      },
+      {
+        canActivate: [AuthGuard] , 
+        path: 'dashboard',  
+        loadComponent: () => import('./demo/chart/apex-chart/apex-chart.component'),
+      },
+      {
+        canActivate: [AdminGuard] , 
+        path: 'dashboard-benefice',  
+        loadComponent: () => import('./demo/pages/dashboard-benefice/dashboard-benefice.component'),
+      },
     ],
   } , {
     path: 'auth',
