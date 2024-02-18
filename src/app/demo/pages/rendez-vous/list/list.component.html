@@ -1,1 +1,27 @@
-<p>list works!</p>
+<div class="row">
+    <div class="col-xl-12">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Email</th>
+                  <th>Date et heure debut </th>
+                  <th>Date et heure fin</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dt of data">
+                  <td scope="row">{{ dt.name }}</td>
+                  <td scope="row">{{ dt.email }}</td>
+                  <td>{{ dt.dateDebutResa }}</td>
+                  <td>{{ dt.dateFinResa }}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        
+      </div>    
+</div>
+
