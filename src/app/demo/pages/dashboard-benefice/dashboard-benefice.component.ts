@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/core/services/api.service';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
@@ -64,88 +64,99 @@ export default class DashboardBeneficeComponent implements OnInit {
 
   data: any;
   series = [];
+  seriesCA = [];
   categories = [];
+  counter = 0;
 
-  constructor(private apiService: ApiService, private toastrService: ToastrService, private cd: ChangeDetectorRef) {
-    this.barSimpleChart = {
-      series: [
-        {
-          name: 'Benefice ',
-          data: this.series,
+  constructor(private apiService: ApiService, private toastrService: ToastrService, private ref: ChangeDetectorRef, private zone: NgZone) {
+
+      this.buildCalculateForm();
+      this.caculateBenefice();
+      this.barSimpleChart = {
+        series: [
+          {
+            name: 'Benefice ',
+            data: this.series,
+          },
+          {
+            name: 'Chiffres d\'affaires ',
+            data: this.seriesCA,
+          },
+        ],
+        chart: {
+          type: 'bar',
+          height: 350,
         },
-      ],
-      chart: {
-        type: 'bar',
-        height: 350,
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-          columnWidth: '55%',
-          // endingShape: "rounded"
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent'],
-      },
-      xaxis: {
-        categories: this.categories,
-      },
-      yaxis: {
-        title: {
-          text: 'Benefice par mois',
-        },
-      },
-      fill: {
-        opacity: 1,
-      },
-      colors: ['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0'],
-      tooltip: {
-        y: {
-          formatter: function (val) {
-            return '' + val;
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '55%',
+            // endingShape: "rounded"
           },
         },
-      },
-    };
-
-    this.donutChart = {
-      chart: {
-        type: 'donut',
-        width: '100%',
-        height: 350,
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      plotOptions: {
-        pie: {
-          customScale: 0.8,
-          donut: {
-            size: '75%',
-          },
-          offsetY: 20,
+        dataLabels: {
+          enabled: false,
         },
-      },
-      colors: ['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0'],
-      series: this.series,
-      labels: this.categories,
-      legend: {
-        position: 'left',
-        offsetY: 80,
-      },
-    };
-    this.cd.detectChanges;
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent'],
+        },
+        xaxis: {
+          categories: this.categories,
+        },
+        yaxis: {
+          title: {
+            text: 'Benefice par mois',
+          },
+        },
+        fill: {
+          opacity: 1,
+        },
+        colors: ['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0'],
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return '' + val;
+            },
+          },
+        },
+      };
+
+      this.donutChart = {
+        chart: {
+          type: 'donut',
+          width: '100%',
+          height: 350,
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        plotOptions: {
+          pie: {
+            customScale: 0.8,
+            donut: {
+              size: '75%',
+            },
+            offsetY: 20,
+          },
+        },
+        colors: ['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0'],
+        series: this.series,
+        labels: this.categories,
+        legend: {
+          position: 'left',
+          offsetY: 80,
+        },
+      };
+      this.ref.detectChanges;
+
   }
 
   ngOnInit(): void {
-    this.buildCalculateForm();
-    this.caculateBenefice();
+
+    // Run the setInterval function outside the Angular zone
+
   }
   ngOnChanges(): void {
     this.caculateBenefice();
@@ -160,6 +171,7 @@ export default class DashboardBeneficeComponent implements OnInit {
   }
   caculateBenefice(): void {
     this.series = [];
+    this.seriesCA = [];
     this.categories = [];
     let calulateData: any = this.calculateForm.value;
     let apiData = {
@@ -173,14 +185,33 @@ export default class DashboardBeneficeComponent implements OnInit {
       this.data.forEach(dt => {
         this.categories.push(dt._id);
         this.series.push(dt.benefice);
+        this.seriesCA.push(dt.CA);
       });
-
-      this.cd.detectChanges;
+      this.updateSeries();
+      this.updateSeriesDonut;
+      this.ref.detectChanges();
       console.log(this.categories);
       console.log(this.series);
     }, err => {
       this.toastrService.error(err);
     })
+  }
+
+  public updateSeries() {
+    this.barSimpleChart.series = [
+      {
+        name: 'Benefice ',
+        data: this.series,
+      },
+      {
+        name: 'Chiffres d\'affaires ',
+        data: this.seriesCA,
+      },
+    ];
+  }
+
+  public updateSeriesDonut(){
+    this.donutChart.series = this.series;
   }
 
 }
