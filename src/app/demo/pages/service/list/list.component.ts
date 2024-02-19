@@ -14,16 +14,22 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   imports: [CommonModule, SharedModule  , NgOptimizedImage],
 })
 export default class ListComponent implements OnInit {
-  constructor(private router : Router , private routerService : RouteService){}
+  data : any[] ; 
+  constructor(private router : Router ){}
   ngOnInit(): void {
     console.log("last successfull route : "); 
-    console.log(this.routerService.getLastSuccessfulRoute()); 
+    //console.log(this.routerService.getLastSuccessfulRoute()); 
+    this.getData();
   }
   isMouseOver: boolean = false;
   
+  getData(): void{
+      this
+  }
+
   onMouseOver(): void {
     this.isMouseOver = true;
-    
+  
   }
 
   onMouseLeave(): void {

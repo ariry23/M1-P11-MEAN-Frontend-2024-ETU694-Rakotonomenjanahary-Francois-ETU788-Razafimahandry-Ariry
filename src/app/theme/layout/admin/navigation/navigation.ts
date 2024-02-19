@@ -74,24 +74,24 @@ const navigationItems = [
       roles : ['admin'] , 
     },
     {
-      id: 'dashboard',
-      title: 'Dashboard',
+      id: 'gestion-service',
+      title: 'Gestion des services',
       type: 'item',
-      url: '/dashboard',
-      classes: 'nav-item',
-      icon: 'feather icon-sidebar', 
-      roles : ['admin'] , 
-    },
-    {
-      id: 'dashboard-benefice',
-      title: 'Dashboard Benefice',
-      type: 'item',
-      url: '/dashboard-benefice',
+      url: '/service/management',
       classes: 'nav-item',
       icon: 'feather icon-sidebar', 
       roles : ['admin'] , 
     },
     
+    {
+      id: 'gestion-service',
+      title: 'Gestion des services',
+      type: 'item',
+      url: '/service/management',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['admin'] , 
+    },
     
   
 ];
