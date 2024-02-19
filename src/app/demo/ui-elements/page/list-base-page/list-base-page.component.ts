@@ -18,8 +18,8 @@ ajoutModalRef: MdbModalRef<any> | null = null;
   public toastrService : ToastrService , @Inject('apiUrl') public apiUrl: string , 
   @Inject('deleteApiUrl') public deleteApiUrl: string ,
   @Inject('deleteComponent') public deleteComponent : any , 
-  @Inject('updateApiUrl') public updateComponent : any , 
-  @Inject('addApiUrl') public addComponent :any 
+  @Inject('updateComponent') public updateComponent : any , 
+  @Inject('addComponent') public addComponent :any 
     /*
      @Inject('deleteApiUrl') public deleteApiUrl , 
      @Inject('updateApiUrl') public updateApiUrl , 

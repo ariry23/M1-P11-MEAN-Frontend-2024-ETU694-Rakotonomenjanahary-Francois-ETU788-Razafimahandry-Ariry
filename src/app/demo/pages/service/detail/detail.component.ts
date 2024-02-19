@@ -37,7 +37,7 @@ export default class DetailComponent {
   constructor(public dialog:MatDialog
   ) {}
 
-  openDialog(): void {
+  openReservationModal(): void {
     /*const dialogRef = this.dialog.open(ReservationPopupComponent, {
       panelClass: 'custom-dialog' , 
       data: {name: this.name, animal: this.animal},

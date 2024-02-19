@@ -1,0 +1,30 @@
+<div class="modal-header d-flex justify-content-center align-items-center">
+    <h5 class="modal-title" id="exampleModalLabel">Reserver</h5>
+    
+  </div>
+  <div class="modal-body d-flex justify-content-center align-items-center">
+    <form  [formGroup]="form" (onsubmit)="save()">
+    <div class="row">
+        <div class="mb-3 col-md-6">
+          <input formControlName="dateReservation" type="email" class="form-control" placeholder="Date de reservation" />
+        </div>
+       
+        <div class="mb-3 col-md-6">
+          <input formControlName="nombrePersonne" type="number" class="form-control" placeholder="Nombre de personne" />
+        </div>
+       
+       
+    </div>
+   
+     
+
+      
+  </form>
+    
+  </div>
+  <div class="modal-footer d-flex justify-content-center align-items-center">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Annuler
+    </button>
+    <button [disabled]="form.invalid" type="button" class="btn btn-primary" (click)="save()">Valider</button>
+  </div>

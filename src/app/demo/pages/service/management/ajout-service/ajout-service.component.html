@@ -9,20 +9,48 @@
   </div>
   <div class="modal-body d-flex justify-content-center align-items-center">
     <form  [formGroup]="form" (onsubmit)="save()">
-        <div class="input-group mb-3">
+    <div class="row">
+        <div class="mb-3 col-md-6">
           <input formControlName="nom" type="email" class="form-control" placeholder="Nom" />
         </div>
        
-        <div class="input-group mb-3">
+        <div class="mb-3 col-md-6">
           <input formControlName="prix" type="number" class="form-control" placeholder="Prix" />
         </div>
-        <div class="input-group mb-3">
-            <input formControlName="commission" type="number" class="form-control" placeholder="Commission" />
-          </div>
-          <div class="input-group mb-3">
-            <input formControlName="duree" type="number" class="form-control" placeholder="Duree"/>
-          </div>
-    </form>
+       
+       
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <input formControlName="commission" type="number" class="form-control" placeholder="Commission" />
+      </div>
+      <!-- <div class="input-group mb-3"> -->
+      <div class="col-md-6 mb-3">
+        <input formControlName="duree" type="number" class="form-control" placeholder="Duree"/>
+      </div>
+      </div>
+
+        <ngx-file-drop formControlName="image" class="text-center" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+        (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+            <ng-template class="text-center" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+              <p><mat-icon>cloud_upload</mat-icon> </p>
+              <p>Drop your file here</p>
+           
+            </ng-template>
+        </ngx-file-drop>
+        <!-- <p *ngIf="file">{{ file.relativePath}}</p> -->
+          <!-- <div id="drop-area" class="border rounded d-flex justify-content-center align-items-center"
+              style="height: 100px; cursor: pointer;">
+              <div class="text-center">
+                 <mat-icon>cloud_upload</mat-icon>
+                 <p>Drop your file here</p>
+              </div>
+          </div> -->
+          <!-- <input type="file" id="fileElem" multiple accept="image/*" class="d-none"> -->
+        <!-- <p *ngIf="file!==null">{{ file.relativePath}}</p> -->
+
+      
+  </form>
     
   </div>
   <div class="modal-footer d-flex justify-content-center align-items-center">

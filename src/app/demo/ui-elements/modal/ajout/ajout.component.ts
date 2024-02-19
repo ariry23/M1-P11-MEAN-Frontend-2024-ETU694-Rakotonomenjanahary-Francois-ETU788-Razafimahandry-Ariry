@@ -16,10 +16,10 @@ import { ApiService } from 'src/app/core/services/api.service';
 })
 export abstract class AjoutComponent {
   @Output() ajoutSuccess: EventEmitter<void> = new EventEmitter<void>();
-  public form : FormGroup ; 
+  public form : FormGroup ;           
   constructor(public modalRef: MdbModalRef<AjoutComponent> , public apiService : ApiService , public toastrService : ToastrService ,  @Inject('apiUrl') public apiUrl: string)
-  {}
-  
+  {}                                      
+                                        
   ngOnInit(): void {
     this.buildForm();
   }
