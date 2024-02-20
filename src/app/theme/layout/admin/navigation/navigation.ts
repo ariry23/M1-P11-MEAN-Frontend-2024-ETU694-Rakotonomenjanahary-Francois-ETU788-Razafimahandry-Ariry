@@ -66,7 +66,7 @@ const navigationItems = [
     },
     {
       id: 'Personnel',
-      title: 'gestion du personnel',
+      title: 'Gestion du personnel',
       type: 'item',
       url: '/personnel',
       classes: 'nav-item',
@@ -83,11 +83,31 @@ const navigationItems = [
       roles : ['admin'] , 
     },
     
+    // {
+    //   id: 'gestion-service',
+    //   title: 'Gestion des services',
+    //   type: 'item',
+    //   url: '/service/management',
+    //   classes: 'nav-item',
+    //   icon: 'feather icon-sidebar', 
+    //   roles : ['admin'] , 
+    // },
+
     {
-      id: 'gestion-service',
-      title: 'Gestion des services',
+      id: 'dashboard',
+      title: 'Dashboard ',
       type: 'item',
-      url: '/service/management',
+      url: '/user/dashboard',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['admin'] , 
+    },
+
+    {
+      id: 'dashboard-benefice',
+      title: 'Dashboard Benefice',
+      type: 'item',
+      url: '/user/dashboard-benefice',
       classes: 'nav-item',
       icon: 'feather icon-sidebar', 
       roles : ['admin'] , 

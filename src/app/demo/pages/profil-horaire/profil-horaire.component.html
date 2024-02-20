@@ -1,1 +1,77 @@
-<p>profil-horaire works!</p>
+<div class="row">
+    <div class="col-md-12 row">
+        <div class="card">
+            <div class="card-body text-center row">
+                <div class="mb-4">
+                    <i class="feather icon-search-plus "></i>
+                </div>
+                <h3 class="mb-4">Liste des depenses</h3>
+
+                <form>
+                    <div class="form-group row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-1  mb-3" align="left">
+                            <label for="text" class="col-6 col-form-label">Heure </label>
+                            <input formControlName="salaire" type="number" class="form-control" required
+                                min="00" step="1" max="20" value="00" />
+                        </div>
+                        <div class="col-md-1  mb-3" align="left">
+                            <label for="text" class="col-6 col-form-label">debut</label>
+                            <input formControlName="salaire" type="number" class="form-control" required
+                                min="00" step="10" value="00" />
+                        </div>
+                        <div class="col-md-1  mb-3" align="left">
+                            <label for="text" class="col-6 col-form-label">Heure</label>
+                            <input formControlName="salaire" type="number" class="form-control" required
+                                min="00" step="10" value="00" />
+                        </div>
+                        <div class="col-md-1  mb-3" align="left">
+                            <label for="text" class="col-5 col-form-label">Fin</label>
+                            <input formControlName="loyer" type="number" class="form-control" required
+                                min="00" step="10" value="00" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-5 mb-4 row" align="left">
+                            <div class="col-4 mb-4">
+                                <input type="checkbox" id="scales" name="lundi" checked="true" />
+                                <label style="margin-left: 5%;" for="Lundi">Lundi</label>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <input type="checkbox" id="horns" name="mardi" />
+                                <label style="margin-left: 5%;" for="Mardi">Mardi</label>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <input type="checkbox" id="horns" name="mardi" />
+                                <label style="margin-left: 5%;" for="Mercredi">Mercredi</label>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <input type="checkbox" id="horns" name="mardi" />
+                                <label style="margin-left: 5%;" for="Jeudi">Jeudi</label>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <input type="checkbox" id="horns" name="mardi" />
+                                <label style="margin-left: 5%;" for="Vendredi">Vendredi</label>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <input type="checkbox" id="horns" name="mardi" />
+                                <label style="margin-left: 5%;" for="Samedi">Samedi</label>
+                            </div>
+                            <!-- <div class="col-4 mb-4">
+                                <input type="checkbox" id="horns" name="mardi" />
+                                <label style="margin-left: 10%;" for="Dimanche">Dimanche</label>
+                            </div> -->
+                        </div>
+                        
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary shadow-2 mb-4">Valide</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
