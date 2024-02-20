@@ -16,3 +16,7 @@ export const SERVICE_MANAGEMENT_AJOUT = 'service/management/ajout' ;
 export const SERVICE_MANAGEMENT_DELETE = 'service/management/delete' ; 
 export const SERVICE_RESERVATION = 'service/reserver' ; 
 
+/*paiement */
+export const PAIEMENT_CREER = 'service/paiement/creer' ; 
+export const PAIEMENT_LIST = 'service/paiement/list' ; 
+

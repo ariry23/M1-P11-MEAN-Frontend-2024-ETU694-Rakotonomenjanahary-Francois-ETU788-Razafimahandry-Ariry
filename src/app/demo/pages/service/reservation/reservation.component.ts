@@ -52,7 +52,8 @@ export class ReservationComponent {
       idserv: this.service._id , 
       userid: decodedToken.user._id , 
       idemploye: this.form.value.employe , 
-      dateReservation: this.form.value.dateReservation + " " + this.form.value.heureDebut  + ":00"
+      dateReservation: this.form.value.dateReservation + " " + this.form.value.heureDebut  + ":00" ,
+      nombrePersonne : this.form.value.nombrePersonne
     } ; 
     this.apiService.postData(SERVICE_RESERVATION , reservationData).subscribe(
       res => {

@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { USER_RESERVATION } from 'src/app/constants/api.constant';
 
 import { ApiService } from 'src/app/core/services/api.service';
 import { TokenService } from 'src/app/core/services/token.service';
+import { PaiementComponent } from '../paiement/paiement.component';
 
 @Component({
   selector: 'app-historique-rendez-vous',
@@ -15,7 +17,8 @@ import { TokenService } from 'src/app/core/services/token.service';
 })
 export default class HistoriqueReservationComponent implements OnInit  {
   data : any[] ; 
-  constructor(private apiService : ApiService , private tokenService : TokenService){
+  paiementModalRef: MdbModalRef<any> | null = null;  
+  constructor(private apiService : ApiService , private tokenService : TokenService , private modalService : MdbModalService){
 
   }
   ngOnInit(): void {
@@ -32,8 +35,21 @@ export default class HistoriqueReservationComponent implements OnInit  {
             this.data = data.data
         } , 
         error => {
-
+          
         }
       )
+  } 
+
+  
+  openPaiementModal(reservation : any )
+  {
+    this.paiementModalRef = this.modalService.open(PaiementComponent , {
+        data:{
+          reservation : reservation
+        }
+    }) ; 
+    this.paiementModalRef.component.paiementSuccess.subscribe(() => {
+        this.getData() ; 
+    });
   }
 }

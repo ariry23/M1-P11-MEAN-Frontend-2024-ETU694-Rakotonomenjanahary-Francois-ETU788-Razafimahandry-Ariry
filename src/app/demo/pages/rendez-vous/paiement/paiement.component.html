@@ -1,0 +1,15 @@
+<div class="modal-header modal-header d-flex justify-content-center align-items-center">
+    <h5 class="modal-title" id="exampleModalLabel">Veuillez confirmer ce paiement</h5>
+   
+  </div>
+  <div class="modal-body d-flex justify-content-center align-items-center">
+    
+        <mat-icon>delete</mat-icon> <!-- Assuming you're using Angular Material icons -->
+        
+  </div>
+  <div class="modal-footer d-flex justify-content-center align-items-center">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Non
+    </button>
+    <button type="button" class="btn btn-primary" (click)="confirm()">Confirmer</button>
+  </div>
