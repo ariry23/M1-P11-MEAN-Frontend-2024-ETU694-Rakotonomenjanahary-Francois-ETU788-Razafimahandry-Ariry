@@ -6,14 +6,27 @@
     <form  [formGroup]="form" (onsubmit)="save()">
     <div class="row">
         <div class="mb-3 col-md-6">
-          <input formControlName="dateReservation" type="email" class="form-control" placeholder="Date de reservation" />
+          <label for="exampleInputEmail1">Date de reservation </label>
+          <input formControlName="dateReservation" type="date" class="form-control" placeholder="Date de reservation" />
         </div>
        
         <div class="mb-3 col-md-6">
+          <label for="exampleInputEmail1">Heure</label>
+          <input formControlName="heureDebut" type="time" class="form-control" placeholder="Nombre de personne" />
+        </div>
+        
+        <div class="mb-3 col-md-6">
+          <label for="exampleInputEmail1">Nombre de personne</label>
           <input formControlName="nombrePersonne" type="number" class="form-control" placeholder="Nombre de personne" />
         </div>
-       
-       
+        
+        <div class="mb-3 col-md-6">
+          <label for="exampleInputEmail1">Choix de l'employé</label>
+          <select class="form-select" formControlName="employe">
+            <option *ngFor="let emp of employes" [value]="emp._id">{{ emp.username }}</option>
+          </select>
+
+        </div>
     </div>
    
      

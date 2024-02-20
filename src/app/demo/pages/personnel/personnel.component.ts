@@ -22,32 +22,15 @@ import { ListBasePageComponent } from '../../ui-elements/page/list-base-page/lis
 export default class PersonnelComponent extends ListBasePageComponent {
   constructor(public override apiService: ApiService , public override modalService : MdbModalService ,  
     public override toastrService : ToastrService
-    ){
-    super(apiService ,  modalService  ,  
-      toastrService , 
-      PERSONNEL_LIST , 
-      PERSONNEL_DELETE , 
-      DeleteConfirmationComponent   , 
+    ){    
+    super(apiService ,  modalService  ,   
+      toastrService ,       
+      PERSONNEL_LIST ,      
+      PERSONNEL_DELETE ,    
+      DeleteConfirmationComponent  ,   
       PersonnelEditPopupComponent  , 
       AjoutPopupComponent);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 /*editModalRef: MdbModalRef<PersonnelEditPopupComponent> | null = null;
 deleteModalRef: MdbModalRef<DeleteConfirmationComponent> | null = null;
@@ -98,8 +81,8 @@ constructor(private apiService : ApiService , private modalService: MdbModalServ
       this.getData(); 
     });
   }
+  */
 
 
-*/
 
 }
