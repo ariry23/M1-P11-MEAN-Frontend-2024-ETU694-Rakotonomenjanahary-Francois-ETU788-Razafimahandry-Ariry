@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ToastrService } from 'ngx-toastr';
-import { SERVICE_MANAGEMENT_DELETE, SERVICE_MANAGEMENT_LIST } from 'src/app/constants/api.constant';
+import { SERVICE_MANAGEMENT_DELETE, SERVICE_MANAGEMENT_LIST, SERVICE_OFFRE } from 'src/app/constants/api.constant';
 import { ApiService } from 'src/app/core/services/api.service';
 import DeleteConfirmationComponent from 'src/app/demo/ui-elements/modal/delete-confirmation/delete-confirmation.component';
 import { ListBasePageComponent } from 'src/app/demo/ui-elements/page/list-base-page/list-base-page.component';
@@ -30,5 +30,11 @@ export default class ManagementComponent extends ListBasePageComponent {
       DeleteConfirmationComponent , 
       EditServiceComponent  , 
       AjoutServiceComponent);
+  }
+
+
+  
+  offre(data: any) {
+      this.apiService.postData(SERVICE_OFFRE, data).subscribe(data => {}) ; 
   }
 }

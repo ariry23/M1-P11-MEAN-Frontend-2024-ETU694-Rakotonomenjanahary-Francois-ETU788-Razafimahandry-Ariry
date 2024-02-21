@@ -1,7 +1,9 @@
 
 <div class = "row">
     <button type="button" (click)="openAjoutModal()" class="btn btn-primary float-left new-button btn-sm">Nouveau</button>
+  
   </div>
+ 
   <div class="row">
       <div class="col-xl-12">
           
@@ -25,6 +27,7 @@
                     <td>
                       <mat-icon (click)="openEditModal(data)">edit</mat-icon> 	
                       <mat-icon (click)="openDeleteModal(data._id , 12)">delete</mat-icon> 
+                      <mat-icon (click)="offre(data)">edit</mat-icon> 	
                     </td>
                   </tr>
                   
