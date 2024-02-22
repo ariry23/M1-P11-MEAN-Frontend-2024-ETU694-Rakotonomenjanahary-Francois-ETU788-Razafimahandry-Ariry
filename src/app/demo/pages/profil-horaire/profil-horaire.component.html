@@ -12,22 +12,22 @@
                         <div class="col-md-4"></div>
                         <div class="col-md-1  mb-3" align="left">
                             <label for="text" class="col-6 col-form-label">Heure </label>
-                            <input formControlName="hourDebut" type="number" class="form-control" required
+                            <input formControlName="hourDebut" type="number" class="form-control" (change)="fliedsChangehourDebut($event)" required
                                 min="00" step="1" max="20" value="{{ hourDebut }}" />
                         </div>
                         <div class="col-md-1  mb-3" align="left">
                             <label for="text" class="col-6 col-form-label">Debut</label>
-                            <input formControlName="minuteDebut" type="number" class="form-control" required
+                            <input formControlName="minuteDebut" type="number" class="form-control" (change)="fliedsChangeminuteDebut($event)" required
                                 min="00" step="10" value="{{ minuteDebut }}" />
                         </div>
                         <div class="col-md-1  mb-3" align="left">
                             <label for="text" class="col-6 col-form-label">Heure</label>
-                            <input formControlName="hourFin" type="number" class="form-control" required
+                            <input formControlName="hourFin" type="number" class="form-control" (change)="fliedsChangehourFin($event)" required
                                 min="00" step="10" value="{{ hourFin }}" />
                         </div>
                         <div class="col-md-1  mb-3" align="left">
                             <label for="text" class="col-5 col-form-label">Fin</label>
-                            <input formControlName="minuteFin" type="number" class="form-control" required
+                            <input formControlName="minuteFin" type="number" class="form-control" (change)="fliedsChangeminuteFin($event)" required
                                 min="00" step="10" value="{{ minuteFin }}" />
                         </div>
                     </div>
