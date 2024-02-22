@@ -6,6 +6,7 @@
                 <tr>
                   <th>Nom</th>
                   <th>Email</th>
+                  <th>Montant Commision (%)</th>
                   <th>Date et heure debut </th>
                   <th>Date et heure fin</th>
                 </tr>
@@ -14,8 +15,9 @@
                 <tr *ngFor="let dt of data">
                   <td scope="row">{{ dt.name }}</td>
                   <td scope="row">{{ dt.email }}</td>
-                  <td>{{ dt.dateDebutResa }}</td>
-                  <td>{{ dt.dateFinResa }}</td>
+                  <td scope="row">{{ dt.mntCom }}</td>
+                  <td scope="row">{{ dt.dateDebutResa }}</td>
+                  <td scope="row">{{ dt.dateFinResa }}</td>
                 </tr>
                 
               </tbody>
