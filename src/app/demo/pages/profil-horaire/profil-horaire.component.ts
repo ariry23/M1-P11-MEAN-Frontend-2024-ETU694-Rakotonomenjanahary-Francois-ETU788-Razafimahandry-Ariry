@@ -95,6 +95,19 @@ export default class ProfilHoraireComponent implements OnInit {
     this.jour_ = this.jour_.replace(/^,/, '');
     console.log(values.currentTarget.checked);
   }
+
+  fliedsChangehourDebut(values: any){
+    this.hourDebut = values.target.value;
+  }
+  fliedsChangeminuteDebut(values: any){
+    this.minuteDebut = values.target.value;
+  }
+  fliedsChangehourFin(values: any){
+    this.hourFin = values.target.value;
+  }
+  fliedsChangeminuteFin(values: any){
+    this.minuteFin = values.target.value;
+  }
   public save(): void {
     let loginData: any = this.horaireForm.value;
     if (this.jour_.startsWith(',')) {
@@ -106,8 +119,8 @@ export default class ProfilHoraireComponent implements OnInit {
     let apiData = {
       _id: this._id,
       iduser: userConnected.user._id,
-      heureDebut: loginData.hourDebut + ':' + loginData.minuteDebut,
-      heureFin: loginData.hourFin + ':' + loginData.minuteFin,
+      heureDebut: this.hourDebut + ':' + this.minuteDebut,
+      heureFin: this.hourFin + ':' + this.minuteFin,
       jour: this.jour_
     }
     this.apiService.postData(ADDORUPDATE_HORAIRE, apiData).subscribe(datas => {
