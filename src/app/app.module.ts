@@ -56,6 +56,10 @@ import { ListBasePageComponent } from './demo/ui-elements/page/list-base-page/li
     NavSearchComponent,
     ToggleFullScreenDirective,
     BasePageComponent,
+    // PreferencesComponent,
+    // AddPreferencesComponent,
+    // EditPreferencesComponent,
+    // TaskListComponent
     //DashboardBeneficeComponent,
   ],
   imports: [

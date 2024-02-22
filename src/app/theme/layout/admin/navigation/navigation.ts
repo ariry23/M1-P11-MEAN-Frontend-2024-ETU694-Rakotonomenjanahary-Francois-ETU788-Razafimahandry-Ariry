@@ -112,6 +112,16 @@ const navigationItems = [
       icon: 'feather icon-sidebar', 
       roles : ['admin'] , 
     },
+
+    {
+      id: 'task-list',
+      title: 'Liste des taches',
+      type: 'item',
+      url: '/user/task-list',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['employee'] , 
+    },
     
   
 ];

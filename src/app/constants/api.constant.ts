@@ -9,6 +9,7 @@ export const CA_PER_DAY = 'user/statCAPerDay';
 export const CA_PER_MONTH = 'user/statCAPerMonth';
 export const BENEFICE_STAT = 'user/statBenefices';
 export const TEMPS_AVG = 'user/statWempl';
+export const TASK_LIST = 'user/taskUser';
 
 /*service management on admin side */ 
 export const SERVICE_MANAGEMENT_LIST = 'service/list' ; 
