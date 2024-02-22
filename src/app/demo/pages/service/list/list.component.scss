@@ -1,0 +1,47 @@
+.card {
+    position: relative;
+
+    &-content {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+        text-align: center;
+
+        .title {
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+
+        .montant {
+            font-size: 20px;
+        }
+    }
+
+    &:hover {
+      .card-content {
+        display: inline-block;
+        animation: fromBottom 0.6s ease-out;
+        color: #fff;
+        font-weight: bold;
+        box-shadow: 0 0 5px #000;
+      }
+
+      img {
+        filter: contrast(140%);
+        transition: 0.5s ease-out;;
+      }
+}
+}
+
+
+@keyframes fromBottom { 
+    from {
+        opacity: 0;
+        top: 80%;
+    } to {
+        top: 40%;
+        opacity: 1;
+    }
+}
