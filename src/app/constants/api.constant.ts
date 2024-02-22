@@ -17,5 +17,5 @@ export const SERVICE_MANAGEMENT_AJOUT = 'service/management/ajout' ;
 export const SERVICE_MANAGEMENT_DELETE = 'service/management/delete' ; 
 
 
-export const HORAIRE_USER = 'user/mon horaire';
+export const HORAIRE_USER = 'user/mon-horaire';
 export const ADDORUPDATE_HORAIRE = 'user/horaire'

@@ -5,57 +5,57 @@
                 <div class="mb-4">
                     <i class="feather icon-search-plus "></i>
                 </div>
-                <h3 class="mb-4">Liste des depenses</h3>
+                <h3 class="mb-4">Vos Horaires de travail</h3>
 
-                <form>
+                <form [formGroup]="horaireForm" (onsubmit)="save()">
                     <div class="form-group row">
                         <div class="col-md-4"></div>
                         <div class="col-md-1  mb-3" align="left">
                             <label for="text" class="col-6 col-form-label">Heure </label>
-                            <input formControlName="salaire" type="number" class="form-control" required
-                                min="00" step="1" max="20" value="00" />
+                            <input formControlName="hourDebut" type="number" class="form-control" required
+                                min="00" step="1" max="20" value="{{ hourDebut }}" />
                         </div>
                         <div class="col-md-1  mb-3" align="left">
-                            <label for="text" class="col-6 col-form-label">debut</label>
-                            <input formControlName="salaire" type="number" class="form-control" required
-                                min="00" step="10" value="00" />
+                            <label for="text" class="col-6 col-form-label">Debut</label>
+                            <input formControlName="minuteDebut" type="number" class="form-control" required
+                                min="00" step="10" value="{{ minuteDebut }}" />
                         </div>
                         <div class="col-md-1  mb-3" align="left">
                             <label for="text" class="col-6 col-form-label">Heure</label>
-                            <input formControlName="salaire" type="number" class="form-control" required
-                                min="00" step="10" value="00" />
+                            <input formControlName="hourFin" type="number" class="form-control" required
+                                min="00" step="10" value="{{ hourFin }}" />
                         </div>
                         <div class="col-md-1  mb-3" align="left">
                             <label for="text" class="col-5 col-form-label">Fin</label>
-                            <input formControlName="loyer" type="number" class="form-control" required
-                                min="00" step="10" value="00" />
+                            <input formControlName="minuteFin" type="number" class="form-control" required
+                                min="00" step="10" value="{{ minuteFin }}" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-4"></div>
                         <div class="col-md-5 mb-4 row" align="left">
                             <div class="col-4 mb-4">
-                                <input type="checkbox" id="scales" name="lundi" checked="true" />
+                                <input type="checkbox" formControlName="lundi"  id="scales" name="lundi" (change)="fieldsChange($event)" value="1" [checked] = "jour.includes('1')" />
                                 <label style="margin-left: 5%;" for="Lundi">Lundi</label>
                             </div>
                             <div class="col-4 mb-4">
-                                <input type="checkbox" id="horns" name="mardi" />
+                                <input type="checkbox" formControlName="mardi" id="horns" name="mardi" (change)="fieldsChange($event)" value="2" [checked] = "jour.includes('2')" />
                                 <label style="margin-left: 5%;" for="Mardi">Mardi</label>
                             </div>
                             <div class="col-4 mb-4">
-                                <input type="checkbox" id="horns" name="mardi" />
+                                <input type="checkbox"  formControlName="mercredi" id="horns" name="mercredi" (change)="fieldsChange($event)" value="3" [checked] = "jour.includes('3')"  />
                                 <label style="margin-left: 5%;" for="Mercredi">Mercredi</label>
                             </div>
                             <div class="col-4 mb-4">
-                                <input type="checkbox" id="horns" name="mardi" />
+                                <input type="checkbox" formControlName="jeudi" id="horns" name="jeudi" (change)="fieldsChange($event)" value="4" [checked] = "jour.includes('4')" />
                                 <label style="margin-left: 5%;" for="Jeudi">Jeudi</label>
                             </div>
                             <div class="col-4 mb-4">
-                                <input type="checkbox" id="horns" name="mardi" />
+                                <input type="checkbox" formControlName="vendredi" id="horns" name="vendredi" (change)="fieldsChange($event)" value="5" [checked] = "jour.includes('5')"  />
                                 <label style="margin-left: 5%;" for="Vendredi">Vendredi</label>
                             </div>
                             <div class="col-4 mb-4">
-                                <input type="checkbox" id="horns" name="mardi" />
+                                <input type="checkbox"  formControlName="samedi" id="horns" name="samedi" (change)="fieldsChange($event)" value="6" [checked] = "jour.includes('6')" />
                                 <label style="margin-left: 5%;" for="Samedi">Samedi</label>
                             </div>
                             <!-- <div class="col-4 mb-4">
@@ -67,7 +67,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary shadow-2 mb-4">Valide</button>
+                    <button type="submit" (click)="save()" class="btn btn-primary shadow-2 mb-4">Valide</button>
                 </form>
 
             </div>
