@@ -25,7 +25,7 @@ import {
 } from 'ng-apexcharts';
 
 import { ApiService } from 'src/app/core/services/api.service';
-import { CHIFFRES_PER_DAY, CHIFFRES_PER_MONTH, CA_PER_DAY, CA_PER_MONTH } from 'src/app/constants/api.constant';
+import { CHIFFRES_PER_DAY, CHIFFRES_PER_MONTH, CA_PER_DAY, CA_PER_MONTH, TEMPS_AVG } from 'src/app/constants/api.constant';
 import { ToastrService } from 'ngx-toastr';
 
 export type ChartOptions = {
@@ -68,6 +68,8 @@ export default class ApexChartComponent  implements OnInit{
   dataCAPerDAy: any;
   dataCAPerMonth: any;
 
+  dataWavgEmpl: any;
+  
 
   series =  [];
   categories = [];
@@ -80,6 +82,9 @@ export default class ApexChartComponent  implements OnInit{
 
   seriesCAMonth =  [];
   categoriesCAMonth = [];
+
+  seriesWavgEmpl =  [];
+  categoriesWavgEmpl = [];
 
   constructor(private apiService: ApiService, private toastrService: ToastrService) {
     this.barSimpleChart = {
@@ -360,8 +365,8 @@ export default class ApexChartComponent  implements OnInit{
         },
       },
       colors: ['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0'],
-      series: this.seriesCAMonth,
-      labels: this.categoriesCAMonth,
+      series: this.seriesWavgEmpl,
+      labels: this.categoriesWavgEmpl,
       legend: {
         position: 'left',
         offsetY: 80,
@@ -374,7 +379,8 @@ export default class ApexChartComponent  implements OnInit{
     this.getDataResaPerMonth();
     this.getDataResaPerDay();
     this.getDataCAPerDay();
-    this.getDataCAPerMonth();
+    // this.getDataCAPerMonth();
+    this.getTempsAvgEmpl();
   }
 
   getDataResaPerDay():void{
@@ -420,6 +426,18 @@ export default class ApexChartComponent  implements OnInit{
       this.dataCAPerMonth.forEach(dt => {
         this.categoriesCAMonth.push(dt._id);
         this.seriesCAMonth.push(dt.CA);
+      });
+    }, err => {
+      this.toastrService.error(err);
+    })
+  }
+
+  getTempsAvgEmpl():void{
+    this.apiService.getData(TEMPS_AVG).subscribe(datas => {
+      this.dataWavgEmpl = datas.result;
+      this.dataWavgEmpl.forEach(dt => {
+        this.categoriesWavgEmpl.push(dt.username);
+        this.seriesWavgEmpl.push(dt.AvgWEmpl);
       });
     }, err => {
       this.toastrService.error(err);

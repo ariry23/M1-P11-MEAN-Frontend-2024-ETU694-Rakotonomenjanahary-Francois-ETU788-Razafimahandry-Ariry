@@ -59,6 +59,10 @@ import { PreferenceDeleteComponent } from './demo/pages/preference/preference-de
     NavSearchComponent,
     ToggleFullScreenDirective,
     BasePageComponent,
+    // PreferencesComponent,
+    // AddPreferencesComponent,
+    // EditPreferencesComponent,
+    // TaskListComponent
     //DashboardBeneficeComponent,
   ],
   imports: [
