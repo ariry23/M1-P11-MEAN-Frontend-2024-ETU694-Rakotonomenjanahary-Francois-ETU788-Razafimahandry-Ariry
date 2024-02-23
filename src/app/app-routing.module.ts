@@ -42,6 +42,11 @@ const routes : Routes = [
           import('./demo/pages/account/account.component')
       },
       {
+        path: 'preference',
+        loadComponent: () =>
+          import('./demo/pages/preference/list/list.component')
+      },
+      {
         path: 'profil-horaire',
         canActivate: [EmployeeGuard] ,
         loadComponent: () =>

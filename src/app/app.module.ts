@@ -38,6 +38,9 @@ import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { AjoutPopupComponent } from './demo/pages/personnel/ajout-popup/ajout-popup.component';
 import { AjoutComponent } from './demo/ui-elements/modal/ajout/ajout.component';
 import { ListBasePageComponent } from './demo/ui-elements/page/list-base-page/list-base-page.component';
+import { PreferenceEditComponent } from './demo/pages/preference/preference-edit/preference-edit.component';
+import { PreferenceAjoutComponent } from './demo/pages/preference/preference-ajout/preference-ajout.component';
+import { PreferenceDeleteComponent } from './demo/pages/preference/preference-delete/preference-delete.component';
 @NgModule({
   declarations: [
     AppComponent,

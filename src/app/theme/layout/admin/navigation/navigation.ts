@@ -92,6 +92,16 @@ const navigationItems = [
       icon: 'feather icon-sidebar', 
       roles : ['admin'] , 
     },
+
+    {
+      id: 'preference',
+      title: 'Preferences',
+      type: 'item',
+      url: '/preference',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['customer'] , 
+    },
     
   
 ];
