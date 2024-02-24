@@ -1,5 +1,5 @@
 <div class = "row">
-    <button type="button" (click)="openAjoutModal()" class="btn btn-primary float-left new-button btn-sm">Nouveau</button>
+    <button type="button" (click)="openAjoutModal(dataServ)" class="col-1 offset-11 btn btn-primary float-left new-button btn-sm">Nouveau</button>
   </div>
   <div class="row">
       <div class="col-xl-12 card">
@@ -10,16 +10,26 @@
                   <tr>
                     <th>Services</th>
                     <th>Employe</th>
+                    <th>Prix</th>
+                    <th>Duree</th>
+                    <th>Status</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let data of data">
-                    <th scope="row">{{ data.username }}</th>
-                    <td>{{ data.email }}</td>
+                    <th scope="row">{{ data.servname }}</th>
+                    <td>{{ data.emplname }}</td>
+                    <td>{{ data.prix | currency: ' MGA' }}</td>
+                    <td>{{ data.duree }}</td>
+                    <td [ngSwitch]="true">
+                      <button class="btn btn-outline-success " *ngSwitchCase="data.status==='V'"> Valide</button>
+                      <button class="btn btn-outline-warning" *ngSwitchCase="data.status==='E'"> En attente</button>
+                      <button class="btn btn-outline-danger" *ngSwitchDefault> Annule</button>
+                    </td> 
                     <td>
-                      <!-- <mat-icon (click)="openEditModal(data)">edit</mat-icon> 	 -->
-                      <!-- <mat-icon (click)="openDeleteModal(data._id , 12)">delete</mat-icon>  -->
+                      <mat-icon (click)="openEditModal(dataServ , data)" >edit</mat-icon> 	 
+                      <!-- (click)="openEditModal(data)" <mat-icon (click)="openDeleteModal(data._id , 12)">delete</mat-icon>  -->
                     </td>
                   </tr>
                   

@@ -1,35 +1,40 @@
 <div class = "row">
-  <button type="button" (click)="openAjoutModal()" class="btn btn-primary col-md-float-left new-button btn-sm">Nouveau</button> 
+  
 </div>
-
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-12 card">
         
           <div class="table-responsive">
             <table class="table table-hover">
-                <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Username</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>
-                        <mat-icon (click)="openEditModal(data)">edit</mat-icon> 	
-                        <mat-icon (click)="openDeleteModal(12)">delete</mat-icon> 
-                      </td>
-                    </tr>
-                    
-                   
-                  </tbody>
+              <thead>
+                <tr>
+                  <th>Services</th>
+                  <th>Employe</th>
+                  <th>Prix</th>
+                  <th>Duree</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of data">
+                  <th scope="row">{{ data.servname }}</th>
+                  <td>{{ data.emplname }}</td>
+                  <td>{{ data.prix | currency: ' MGA' }}</td>
+                  <td>{{ data.duree }}</td>
+                  <td [ngSwitch]="true">
+                    <button class="btn btn-outline-success " *ngSwitchCase="data.status==='V'"> Valide</button>
+                    <button class="btn btn-outline-warning" *ngSwitchCase="data.status==='E'"> En attente</button>
+                    <button class="btn btn-outline-danger" *ngSwitchDefault> Annule</button>
+                  </td> 
+                  <td>
+                    <mat-icon (click)="" >Submit</mat-icon> 
+                    <mat-icon (click)="" >Cancel</mat-icon> 	 
+                    <!-- (click)="openEditModal(data)" <mat-icon (click)="openDeleteModal(data._id , 12)">delete</mat-icon>  -->
+                  </td>
+                </tr>
+                
+              </tbody>
             </table>
           </div>
         

@@ -23,7 +23,8 @@ export const PAIEMENT_CREER = 'service/paiement/creer' ;
 export const PAIEMENT_LIST = 'service/paiement/list' ; 
 
 
-
+export const USER_RESERVATION = 'user/reservation/customer';
 
 export const HORAIRE_USER = 'user/mon-horaire';
 export const ADDORUPDATE_HORAIRE = 'user/horaire'
+

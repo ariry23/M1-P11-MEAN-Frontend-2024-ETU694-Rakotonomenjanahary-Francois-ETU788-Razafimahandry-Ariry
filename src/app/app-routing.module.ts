@@ -42,11 +42,6 @@ const routes : Routes = [
           import('./demo/pages/account/account.component')
       },
       {
-        path: 'preference',
-        loadComponent: () =>
-          import('./demo/pages/preference/list/list.component')
-      },
-      {
         path: 'profil-horaire',
         canActivate: [EmployeeGuard] ,
         loadComponent: () =>
@@ -69,9 +64,14 @@ const routes : Routes = [
         loadComponent: () => import('./demo/pages/dashboard-benefice/dashboard-benefice.component'),
       },
       {
-        canActivate: [EmployeeGuard] , 
+        canActivate: [EmployeeGuard] ,
         path: 'user/task-list',  
         loadComponent: () => import('./demo/pages/task-list/task-list.component'),
+      },
+      {
+        canActivate: [EmployeeGuard] ,
+        path: 'user/gestion-pref',  
+        loadComponent: () => import('./demo/pages/preferences/preferences.component'),
       },
     ],
   } , {

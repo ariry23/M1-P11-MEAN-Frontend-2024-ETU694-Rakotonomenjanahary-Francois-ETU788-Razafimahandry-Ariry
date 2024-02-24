@@ -1,1 +1,35 @@
-<p>edit-preferences works!</p>
+<div class="modal-header d-flex justify-content-center align-items-center">
+    <h5 class="modal-title" id="exampleModalLabel">Nouveau preferences</h5>
+  </div>
+  <div class="modal-body d-flex justify-content-center align-items-center">
+    <form  [formGroup]="form" (onsubmit)="save()">
+        <div class="mb-3 col-md-12">
+          <label for="exampleInputEmail1">Choix de service</label>
+            <select class="form-select mb-1" formControlName="serviceEdit" (change)="onChangeService($event)">
+                <option *ngFor="let dataServ of dataServ" [value]="dataServ._id+'__'+dataServ.commission">{{ dataServ.nom }}</option>
+            </select>
+        </div>
+        <div class="mb-3 col-md-12">
+          <label for="exampleInputEmail1">Choix de l'employé</label>
+          <select class="form-select" formControlName="personnelEdit" (change)="onChangePersonel($event)">
+            <option *ngFor="let dataPers of dataPers" [value]="dataPers._id">{{ dataPers.username }}</option>
+          </select>
+
+        </div>
+        <div class="mb-3 col-md-12">
+            <label for="exampleInputEmail1">Prix</label>
+            <input formControlName="prixEdit" type="number" min="0" class="form-control" placeholder="Prix" />
+          </div>
+          <div class="mb-3 col-md-12">
+            <label for="exampleInputEmail1">Duree</label>
+            <input formControlName="dureeEdit" type="number" min="0" class="form-control" placeholder="Duree"/>
+          </div>
+    </form>
+    
+  </div>
+  <div class="modal-footer d-flex justify-content-center align-items-center">
+    <button class="btn btn-danger" (click)="modalRef.close()">
+      Annuler
+    </button>
+    <button  type="button" class="btn btn-primary" (click)="save()" >Valider</button>
+  </div>

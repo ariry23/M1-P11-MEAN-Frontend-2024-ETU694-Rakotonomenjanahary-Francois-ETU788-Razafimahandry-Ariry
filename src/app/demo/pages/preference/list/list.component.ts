@@ -26,41 +26,12 @@ constructor(public apiService: ApiService , public modalService : MdbModalServic
   ngOnInit(): void {
     this.getData();
   }
- 
 
-  getData():void
-  {
-    this.apiService.getData("").subscribe(datas => {
-      this.data = datas.data ; 
+  getData(): void {
+    this.apiService.getData('user/list-pref-all').subscribe(datas => {
+      this.data = datas.data;
     }, err => {
-      this.toastrService.error(err) ; 
+      this.toastrService.error(err);
     })
   }
-  openEditModal(data: any) {
-    this.editModalRef = this.modalService.open(PreferenceEditComponent , {data : {data:data}}) ; 
-    this.editModalRef.component.editSuccess.subscribe(() => {
-      this.getData(); 
-    });
-  }
-
-  openAjoutModal() {
-    this.ajoutModalRef = this.modalService.open(PreferenceAjoutComponent ) ; 
-    this.ajoutModalRef.component.ajoutSuccess.subscribe(() => {
-      this.getData(); 
-    });
-  }
-
-  openDeleteModal(id: any , data?: any) {
-    this.deleteModalRef = this.modalService.open(PreferenceDeleteComponent , {
-      data : {
-          data : {
-          
-            data : data !== null && data !== undefined ? data : null  
-          }
-      }
-    }) ; 
-    this.deleteModalRef.component.deleteSuccess.subscribe(() => {
-      this.getData(); 
-    });
-  } 
 }

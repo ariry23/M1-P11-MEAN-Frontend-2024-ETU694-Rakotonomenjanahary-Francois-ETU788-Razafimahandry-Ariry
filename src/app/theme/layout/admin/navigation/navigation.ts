@@ -104,15 +104,6 @@ const navigationItems = [
     },
 
     {
-      id: 'preference',
-      title: 'Preferences',
-      type: 'item',
-      url: '/preference',
-      classes: 'nav-item',
-      icon: 'feather icon-sidebar', 
-      roles : ['customer'] , 
-    } , 
-    {
       id: 'dashboard-benefice',
       title: 'Dashboard Benefice',
       type: 'item',
@@ -127,6 +118,15 @@ const navigationItems = [
       title: 'Liste des taches',
       type: 'item',
       url: '/user/task-list',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['employee'] , 
+    },
+    {
+      id: 'gestion-pref',
+      title: 'Gestion de preferences',
+      type: 'item',
+      url: '/user/gestion-pref',
       classes: 'nav-item',
       icon: 'feather icon-sidebar', 
       roles : ['employee'] , 
