@@ -73,6 +73,11 @@ const routes : Routes = [
         path: 'user/gestion-pref',  
         loadComponent: () => import('./demo/pages/preferences/preferences.component'),
       },
+      {
+        canActivate: [AdminGuard] ,
+        path: 'admin/valid-preferences',  
+        loadComponent: () => import('./demo/pages/preference/list/list.component'),
+      },
     ],
   } , {
     path: 'auth',

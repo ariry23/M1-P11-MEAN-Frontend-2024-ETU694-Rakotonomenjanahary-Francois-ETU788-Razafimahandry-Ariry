@@ -28,8 +28,8 @@
                     <button class="btn btn-outline-danger" *ngSwitchDefault> Annule</button>
                   </td> 
                   <td>
-                    <mat-icon (click)="" >Submit</mat-icon> 
-                    <mat-icon (click)="" >Cancel</mat-icon> 	 
+                    <button class="btn btn-info" (click)="onSubmit(data._id, 'V')" >Valider</button> 
+                    <button class="btn btn-danger" (click)="onSubmit(data._id, 'A')" >Annuler</button> 	 
                     <!-- (click)="openEditModal(data)" <mat-icon (click)="openDeleteModal(data._id , 12)">delete</mat-icon>  -->
                   </td>
                 </tr>

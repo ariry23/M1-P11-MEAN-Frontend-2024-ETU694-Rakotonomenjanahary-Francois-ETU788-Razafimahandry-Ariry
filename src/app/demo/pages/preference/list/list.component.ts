@@ -34,4 +34,12 @@ constructor(public apiService: ApiService , public modalService : MdbModalServic
       this.toastrService.error(err);
     })
   }
+
+  onSubmit(id, status){
+  this.apiService.postData('user/valid-pref',{_id:id, status: status}).subscribe(datas => {
+    this.toastrService.success(datas.message);
+  }, err => {
+    this.toastrService.error(err.message);
+  })
+  }
 }

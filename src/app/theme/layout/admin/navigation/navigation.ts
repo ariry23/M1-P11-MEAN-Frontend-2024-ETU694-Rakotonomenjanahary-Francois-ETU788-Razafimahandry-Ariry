@@ -112,6 +112,15 @@ const navigationItems = [
       icon: 'feather icon-sidebar', 
       roles : ['admin'] , 
     },
+    {
+      id: 'valid-preferences',
+      title: 'Gestion de preferences',
+      type: 'item',
+      url: '/admin/valid-preferences',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['admin'] , 
+    },
 
     {
       id: 'task-list',
