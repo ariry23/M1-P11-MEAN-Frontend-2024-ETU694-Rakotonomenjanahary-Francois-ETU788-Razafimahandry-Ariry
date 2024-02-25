@@ -37,3 +37,5 @@ export const USER_ACCOUNT = 'user/account';
 export const USER_ACCOUNT_ADMIN = 'user/account/admin';
 
 export const SERVICE_SEARCH = 'service/search' ; 
+
+export const USER_RESA = 'user/reservation';

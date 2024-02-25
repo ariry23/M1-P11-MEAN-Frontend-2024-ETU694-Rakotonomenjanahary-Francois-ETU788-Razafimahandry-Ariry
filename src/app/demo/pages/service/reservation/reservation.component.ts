@@ -8,7 +8,7 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { PERSONNEL_LIST, SERVICE_RESERVATION } from 'src/app/constants/api.constant';
+import { PERSONNEL_LIST, SERVICE_RESERVATION, USER_RESA } from 'src/app/constants/api.constant';
 import { ApiService } from 'src/app/core/services/api.service';
 import { TokenService } from 'src/app/core/services/token.service';
 
@@ -53,9 +53,12 @@ export class ReservationComponent {
       userid: decodedToken.user._id , 
       idemploye: this.form.value.employe , 
       dateReservation: this.form.value.dateReservation + " " + this.form.value.heureDebut  + ":00" ,
-      nombrePersonne : this.form.value.nombrePersonne
+      nbPersonne : this.form.value.nombrePersonne
     } ; 
-    this.apiService.postData(SERVICE_RESERVATION , reservationData).subscribe(
+
+
+
+    this.apiService.postData(USER_RESA , reservationData).subscribe(
       res => {
         this.modalRef.close();
         this.ajoutSuccess.emit();
