@@ -79,9 +79,7 @@ export class AjoutServiceComponent extends AjoutComponent {
   }  
   
   dropped(files: NgxFileDropEntry[]) {
-   /* for(let file of files) {
-      this.file = file;
-    } */
+   //this.file = files[0];
     
     for (const droppedFile of files) {
 
@@ -135,7 +133,13 @@ export class AjoutServiceComponent extends AjoutComponent {
     let data : any = this.form.value ; 
     let formData: FormData = new FormData();
     formData.append('files', this.file, this.file.name);
-    
+    formData.append('nom', data.nom);
+    formData.append('prix', data.prix);
+    formData.append('commission', data.commission);
+    formData.append('duree' , data.duree);
+    formData.append('fileName' , this.file.name);
+   // image : req.body.image
+
 
     /*formData.append("nom" , data.nom) ; 
     formData.append("prix" , data.prix) ; 

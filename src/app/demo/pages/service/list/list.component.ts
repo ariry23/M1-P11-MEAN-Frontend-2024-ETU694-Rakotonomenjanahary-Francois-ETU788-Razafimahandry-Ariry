@@ -8,16 +8,17 @@ import { RouteService } from 'src/app/core/services/route.service';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import {ReservationComponent} from '../reservation/reservation.component';
 import { ApiService } from 'src/app/core/services/api.service';
-import { SERVICE_MANAGEMENT_LIST } from 'src/app/constants/api.constant';
+import { SERVICE_MANAGEMENT_LIST, SERVICE_SEARCH } from 'src/app/constants/api.constant';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'service-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   standalone : true , 
-  imports: [CommonModule, SharedModule  , NgOptimizedImage, NgxSpinnerModule],
+  imports: [CommonModule, SharedModule  , NgOptimizedImage, NgxSpinnerModule , MatFormFieldModule],
 })
 export default class ListComponent implements OnInit {    
   data : any[] ;    
@@ -26,18 +27,20 @@ export default class ListComponent implements OnInit {
   ngOnInit(): void {                                                    
     console.log("last successfull route : ");                           
     //console.log(this.routerService.getLastSuccessfulRoute());         
-    this.getData();                                                     
+    this.getData("");                                                     
   }
   isMouseOver: boolean = false;
   
-  getData(): void{  
-      this.apiService.getData(SERVICE_MANAGEMENT_LIST).subscribe(datas => {
+  getData(search : string ): void{  
+      let data = {
+          search: search
+      } ; 
+      this.apiService.postData(SERVICE_SEARCH , data).subscribe(datas => {
         this.data = datas.data ;      
         console.log(this.data) ;      
       }, err => {
         this.toastrService.error(err) ;       
       })
-
   }
 
   onMouseOver(): void {
@@ -64,6 +67,13 @@ export default class ListComponent implements OnInit {
     this.reservationModalRef.component.ajoutSuccess.subscribe(() => {
       this.router.navigate(["/rendez-vous/historique"]) ; 
     });
+  }
+
+  onInputChange(event: any) {
+    const inputValue = event.target.value;
+    console.log('Input value changed:', inputValue);
+    this.getData(inputValue);
+    // You can perform further actions with the input value here
   }
 
 }

@@ -1,5 +1,11 @@
 <ngx-spinner size="medium" type="ball-scale-multiple"></ngx-spinner>
-<div class="row">
+
+<div class="row justify-content-center">
+    <div class="form-outline col-md-2" data-mdb-input-init>
+      <input type="search" id="form1" class="form-control text-center" placeholder="Rechercher un service" aria-label="Search" (change)="onInputChange($event)" />
+    </div>
+  </div>
+<div class="row mt-2">
     <div *ngFor="let dt of data" class="col-md-6 col-lg-4">
         <div (click)="openReservationModal(dt)" class="card">
             <img ngSrc="assets/images/service/coiffure-homme-v2.jpg" width="auto" height="auto" priority>

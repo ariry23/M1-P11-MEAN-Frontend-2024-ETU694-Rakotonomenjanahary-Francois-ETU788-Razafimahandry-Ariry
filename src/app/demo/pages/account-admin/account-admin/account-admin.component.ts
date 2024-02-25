@@ -20,7 +20,7 @@ export default class AccountAdminComponent implements OnInit {
   
   constructor(private toastrService : ToastrService , private tokenService: TokenService , private apiService : ApiService){
   }
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.getData() ; 
   }
   getData(): void{

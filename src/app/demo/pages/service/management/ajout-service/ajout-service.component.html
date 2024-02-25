@@ -34,11 +34,11 @@
         (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
             <ng-template class="text-center" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
               <p><mat-icon>cloud_upload</mat-icon> </p>
-              <p>Drop your file here</p>
+              <p>Drop your picture here</p>
            
             </ng-template>
         </ngx-file-drop>
-        <!-- <p *ngIf="file">{{ file.relativePath}}</p> -->
+         <p *ngIf="file!==null">{{ file.name}}</p> 
           <!-- <div id="drop-area" class="border rounded d-flex justify-content-center align-items-center"
               style="height: 100px; cursor: pointer;">
               <div class="text-center">
