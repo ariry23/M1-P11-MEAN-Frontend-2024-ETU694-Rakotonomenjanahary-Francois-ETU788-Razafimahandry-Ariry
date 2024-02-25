@@ -1,6 +1,4 @@
-<div class = "row">
-  
-</div>
+<ngx-spinner size="medium" type="ball-scale-multiple"></ngx-spinner>
 <div class="row">
     <div class="col-xl-12 card">
         
@@ -28,8 +26,8 @@
                     <button class="btn btn-outline-danger" *ngSwitchDefault> Annule</button>
                   </td> 
                   <td>
-                    <button class="btn btn-info" (click)="onSubmit(data._id, 'V')" >Valider</button> 
-                    <button class="btn btn-danger" (click)="onSubmit(data._id, 'A')" >Annuler</button> 	 
+                    <button class="btn btn-info" [disabled]="data.status==='V'" (click)="onSubmit(data._id, 'V')" >Valider</button> 
+                    <button class="btn btn-danger" [disabled]="data.status==='A'" (click)="onSubmit(data._id, 'A')" >Annuler</button> 	 
                     <!-- (click)="openEditModal(data)" <mat-icon (click)="openDeleteModal(data._id , 12)">delete</mat-icon>  -->
                   </td>
                 </tr>

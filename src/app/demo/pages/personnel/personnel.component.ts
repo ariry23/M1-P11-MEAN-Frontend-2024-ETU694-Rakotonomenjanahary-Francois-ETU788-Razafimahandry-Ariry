@@ -12,12 +12,13 @@ import { PersonnelEditPopupComponent } from './personnel-edit-popup/personnel-ed
 import { AjoutPopupComponent } from './ajout-popup/ajout-popup.component';
 import { PERSONNEL_AJOUT, PERSONNEL_DELETE, PERSONNEL_LIST, PERSONNEL_UPDATE } from 'src/app/constants/api.constant';
 import { ListBasePageComponent } from '../../ui-elements/page/list-base-page/list-base-page.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @Component({
   selector: 'app-personnel',
   templateUrl: './personnel.component.html',
   styleUrls: ['./personnel.component.scss'] , 
   standalone: true,
-  imports: [MatIconModule , CommonModule] 
+  imports: [MatIconModule , CommonModule, NgxSpinnerModule] 
 })
 export default class PersonnelComponent extends ListBasePageComponent {
   constructor(public override apiService: ApiService , public override modalService : MdbModalService ,  

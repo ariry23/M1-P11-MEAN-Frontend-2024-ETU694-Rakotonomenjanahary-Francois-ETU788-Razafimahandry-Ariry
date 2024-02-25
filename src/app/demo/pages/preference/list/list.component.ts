@@ -7,13 +7,14 @@ import { PreferenceDeleteComponent } from '../preference-delete/preference-delet
 import { PreferenceAjoutComponent } from '../preference-ajout/preference-ajout.component';
 import { PreferenceEditComponent } from '../preference-edit/preference-edit.component';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'] , 
   standalone:true , 
-  imports: [CommonModule , MatIconModule],
+  imports: [CommonModule , MatIconModule, NgxSpinnerModule],
 })
 export default class ListComponent implements OnInit {
   editModalRef: MdbModalRef<any> | null = null;
@@ -38,6 +39,7 @@ constructor(public apiService: ApiService , public modalService : MdbModalServic
   onSubmit(id, status){
   this.apiService.postData('user/valid-pref',{_id:id, status: status}).subscribe(datas => {
     this.toastrService.success(datas.message);
+    this.getData();
   }, err => {
     this.toastrService.error(err.message);
   })

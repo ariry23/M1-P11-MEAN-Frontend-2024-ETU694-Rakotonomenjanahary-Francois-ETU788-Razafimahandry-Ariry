@@ -9,13 +9,14 @@ import { AddPreferencesComponent } from './add-preferences/add-preferences.compo
 import { EditPreferencesComponent } from './edit-preferences/edit-preferences.component';
 import { jwtDecode } from 'jwt-decode';
 import { TokenService } from 'src/app/core/services/token.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-preferences',
   templateUrl: './preferences.component.html',
   styleUrls: ['./preferences.component.scss'], 
   standalone: true,
-  imports: [MatIconModule , CommonModule] 
+  imports: [MatIconModule , CommonModule, NgxSpinnerModule] 
 })
 export default class PreferencesComponent implements OnInit{
   ajoutModalRef: MdbModalRef<any> | null = null; 

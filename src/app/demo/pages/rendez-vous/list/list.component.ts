@@ -10,6 +10,7 @@ import { RENDEZ_VOUS_LIST } from 'src/app/constants/api.constant';
 import { CommonModule } from '@angular/common';
 import { TokenService } from 'src/app/core/services/token.service';
 import { jwtDecode } from 'jwt-decode';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { jwtDecode } from 'jwt-decode';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   standalone: true,
-  imports: [ CommonModule] 
+  imports: [ CommonModule, NgxSpinnerModule] 
 })
 export default class ListComponent implements OnInit{
 

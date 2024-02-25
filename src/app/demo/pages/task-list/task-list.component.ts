@@ -5,13 +5,14 @@ import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/core/services/api.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { TASK_LIST } from 'src/app/constants/api.constant';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss'],
   standalone: true,
-  imports: [ CommonModule] 
+  imports: [ CommonModule, NgxSpinnerModule] 
 })
 export default class TaskListComponent implements OnInit{
 

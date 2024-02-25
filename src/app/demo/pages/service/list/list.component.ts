@@ -10,13 +10,14 @@ import {ReservationComponent} from '../reservation/reservation.component';
 import { ApiService } from 'src/app/core/services/api.service';
 import { SERVICE_MANAGEMENT_LIST } from 'src/app/constants/api.constant';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'service-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   standalone : true , 
-  imports: [CommonModule, SharedModule  , NgOptimizedImage],
+  imports: [CommonModule, SharedModule  , NgOptimizedImage, NgxSpinnerModule],
 })
 export default class ListComponent implements OnInit {    
   data : any[] ;    
