@@ -32,7 +32,13 @@ export class PaiementComponent {
   
   
   confirm() {
-    this.apiService.postData(PAIEMENT_CREER , this.reservation).subscribe(
+    let paiementData = this.reservation ; 
+    let decoded : any = jwtDecode(this.tokenService.getToken());
+    
+    paiementData.userName = decoded.user.username ; 
+    paiementData.soldeUser = decoded.user.solde ; 
+    console.log(paiementData) ; 
+    this.apiService.postData(PAIEMENT_CREER , paiementData).subscribe(
       res => {
         this.modalRef.close();
         this.paiementSuccess.emit();

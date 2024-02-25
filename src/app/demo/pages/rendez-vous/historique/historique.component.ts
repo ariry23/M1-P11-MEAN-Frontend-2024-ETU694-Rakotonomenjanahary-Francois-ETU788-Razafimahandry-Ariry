@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { USER_RESERVATION } from 'src/app/constants/api.constant';
+import { CLIENT_HISTORIQUE, USER_RESERVATION } from 'src/app/constants/api.constant';
 
 import { ApiService } from 'src/app/core/services/api.service';
 import { TokenService } from 'src/app/core/services/token.service';
@@ -28,9 +28,9 @@ export default class HistoriqueReservationComponent implements OnInit  {
   {
       let decoded : any = jwtDecode(this.tokenService.getToken());
       let data = {
-          userid : decoded.user._id,
+        idclient : decoded.user._id,
       } ; 
-      this.apiService.postData(USER_RESERVATION  , data).subscribe(
+      this.apiService.postData(CLIENT_HISTORIQUE  , data).subscribe(
         data => {
             this.data = data.data
         } , 

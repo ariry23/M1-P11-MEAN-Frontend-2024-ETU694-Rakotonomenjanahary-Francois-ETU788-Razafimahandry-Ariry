@@ -42,6 +42,11 @@ const routes : Routes = [
           import('./demo/pages/account/account.component')
       },
       {
+        path: 'account-admin',
+        loadComponent: () =>
+          import('./demo/pages/account-admin/account-admin/account-admin.component')
+      },
+      {
         path: 'profil-horaire',
         canActivate: [EmployeeGuard] ,
         loadComponent: () =>

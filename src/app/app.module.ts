@@ -41,6 +41,7 @@ import { ListBasePageComponent } from './demo/ui-elements/page/list-base-page/li
 import { PreferenceEditComponent } from './demo/pages/preference/preference-edit/preference-edit.component';
 import { PreferenceAjoutComponent } from './demo/pages/preference/preference-ajout/preference-ajout.component';
 import { PreferenceDeleteComponent } from './demo/pages/preference/preference-delete/preference-delete.component';
+import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +92,14 @@ import { PreferenceDeleteComponent } from './demo/pages/preference/preference-de
     provide: HTTP_INTERCEPTORS,
     useClass: ApiUrlInterceptor,
     multi: true
-  }],
+  } , 
+  {
+    provide: HTTP_INTERCEPTORS, // Add SpinnerInterceptor to intercept HTTP requests
+    useClass: LoadingInterceptor,
+    multi: true
+  }
+
+],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

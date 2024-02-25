@@ -14,10 +14,10 @@
               </thead>
               <tbody>
                 <tr *ngFor="let dt of data">
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{ dt.dateDebutResa }}</th>
+                  <td>{{ dt.name  }}</td>
+                  <td>{{ dt.nameServ  }}</td>
+                  <td>{{ dt.nombrePersonne }}</td>
                   <td><button [disabled]="dt.statusPaiement!=='non paye'" (click)="openPaiementModal(dt)" type="button" class="btn btn-warning">Payer</button></td>
                 </tr>
               

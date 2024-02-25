@@ -3,8 +3,8 @@
         <div (click)="openReservationModal(dt)" class="card">
             <img ngSrc="assets/images/service/coiffure-homme-v2.jpg" width="auto" height="auto" priority>
             <div class="card-content">
-                <div class="title">Title</div>
-                <div class="montant">1000.000Ar</div>
+                <div class="title">{{ dt.nom }}</div>
+                <div class="montant">{{ dt.prix |  currency:'MGA' }}</div>
 
             </div>
         </div>

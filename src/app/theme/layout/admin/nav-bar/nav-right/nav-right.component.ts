@@ -4,6 +4,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/core/services/token.service';
 import { CookieService } from 'ngx-cookie-service';
+import { jwtDecode } from 'jwt-decode';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav-right',
@@ -37,7 +39,7 @@ export class NavRightComponent {
   friendId: boolean;
   router : Router;
   tokenService : TokenService;
-  constructor(config: NgbDropdownConfig , tokenService: TokenService , router :  Router , private cookieService : CookieService) {
+  constructor(private toastrService : ToastrService , config: NgbDropdownConfig , tokenService: TokenService , router :  Router , private cookieService : CookieService) {
     config.placement = 'bottom-right';
     this.visibleUserList = false;
     this.chatMessage = false;
@@ -59,6 +61,20 @@ export class NavRightComponent {
 
   redirectToAccount()
   {
-    this.router.navigate(['/account']); 
+    let token : any = this.tokenService.getToken();
+    let decoded : any = jwtDecode(token) ; 
+    let role = decoded.role.name ; 
+    if(role === "customer")
+    {
+      this.router.navigate(['/account']); 
+    }
+    else if(role === "admin")
+    {
+      this.router.navigate(['/account-admin']); 
+    }
+    else{
+      this.toastrService.error("Vous n'avez pas access a ce menu") ; 
+    }
+    
   }
 }

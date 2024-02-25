@@ -11,13 +11,15 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { AjoutServiceComponent } from './ajout-service/ajout-service.component';
 import { EditServiceComponent } from './edit-service/edit-service.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
   styleUrls: ['./management.component.scss'] , 
   standalone:true , 
-  imports: [MatIconModule , CommonModule] 
+  imports: [SharedModule  ,  MatIconModule , CommonModule , NgxSpinnerModule] 
 })
 export default class ManagementComponent extends ListBasePageComponent {
   constructor(public override apiService: ApiService , public override modalService : MdbModalService ,  

@@ -26,5 +26,12 @@ export const PAIEMENT_LIST = 'service/paiement/list' ;
 export const USER_RESERVATION = 'user/reservation/customer';
 
 export const HORAIRE_USER = 'user/mon-horaire';
-export const ADDORUPDATE_HORAIRE = 'user/horaire'
+export const ADDORUPDATE_HORAIRE = 'user/horaire' ; 
 
+
+export const CLIENT_HISTORIQUE = 'user/historic' ; 
+
+
+export const USER_ACCOUNT = 'user/account' ;
+
+export const USER_ACCOUNT_ADMIN= 'user/account/admin' ;

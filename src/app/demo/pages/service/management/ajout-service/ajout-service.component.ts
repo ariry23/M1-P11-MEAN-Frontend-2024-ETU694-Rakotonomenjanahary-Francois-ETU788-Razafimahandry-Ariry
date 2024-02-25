@@ -79,9 +79,9 @@ export class AjoutServiceComponent extends AjoutComponent {
   }  
   
   dropped(files: NgxFileDropEntry[]) {
-    for(let file of files) {
+   /* for(let file of files) {
       this.file = file;
-    }
+    } */
     
     for (const droppedFile of files) {
 
@@ -91,10 +91,8 @@ export class AjoutServiceComponent extends AjoutComponent {
         fileEntry.file((file: File) => {
 
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
-          console.log('ato ee');
+          this.file = file;
           this.form.get('image').setValue(this.file);
-          console.log(this.file) ; 
           console.log(this.form.value);
           /**
           // You could upload it like this:
@@ -136,13 +134,16 @@ export class AjoutServiceComponent extends AjoutComponent {
     console.log(this.form.value);
     let data : any = this.form.value ; 
     let formData: FormData = new FormData();
+    formData.append('files', this.file, this.file.name);
+    
+
     /*formData.append("nom" , data.nom) ; 
     formData.append("prix" , data.prix) ; 
     formData.append("commission" , data.commission ) ; 
     formData.append("duree" ,  data.duree ) 
     formData.append("description" , data.description ) 
     formData.append("image" , data.image ) ; */
-    this.apiService.postData(this.apiUrl , this.form.value).subscribe(
+    this.apiService.postData(this.apiUrl ,formData).subscribe(
       res => {
         this.modalRef.close();
         this.ajoutSuccess.emit();
