@@ -24,6 +24,7 @@ import {
   NgApexchartsModule,
 } from 'ng-apexcharts';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | ApexNonAxisChartSeries;
@@ -46,7 +47,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-dashboard-benefice',
   standalone: true,
-  imports: [CommonModule, SharedModule, NgApexchartsModule, ReactiveFormsModule],
+  imports: [CommonModule, SharedModule, NgApexchartsModule, ReactiveFormsModule, NgxSpinnerModule],
   templateUrl: './dashboard-benefice.component.html',
   styleUrls: ['./dashboard-benefice.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -27,6 +27,7 @@ import {
 import { ApiService } from 'src/app/core/services/api.service';
 import { CHIFFRES_PER_DAY, CHIFFRES_PER_MONTH, CA_PER_DAY, CA_PER_MONTH, TEMPS_AVG } from 'src/app/constants/api.constant';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | ApexNonAxisChartSeries;
@@ -49,7 +50,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-apex-chart',
   standalone: true,
-  imports: [CommonModule, SharedModule, NgApexchartsModule],
+  imports: [CommonModule, SharedModule, NgApexchartsModule, NgxSpinnerModule],
   templateUrl: './apex-chart.component.html',
   styleUrls: ['./apex-chart.component.scss'],
 })
