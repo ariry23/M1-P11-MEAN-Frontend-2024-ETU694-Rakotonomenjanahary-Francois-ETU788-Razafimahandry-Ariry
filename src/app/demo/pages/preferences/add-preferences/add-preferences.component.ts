@@ -95,7 +95,7 @@ export class AddPreferencesComponent implements OnInit {
       this.modalRef.close()
       this.ajoutSuccess.emit();
     }, err => {
-      this.toastrService.error('Cette preferences existe deja ');
+      this.toastrService.error(err.error);
     })
 
   }

@@ -41,10 +41,11 @@ export class PaiementComponent {
     this.apiService.postData(PAIEMENT_CREER , paiementData).subscribe(
       res => {
         this.modalRef.close();
+        this.toastrService.success('Paiement reussi'); 
         this.paiementSuccess.emit();
       },
       err => {
-          this.toastrService.error(err.message); 
+        this.toastrService.error(err.error); 
       }
     );
   }

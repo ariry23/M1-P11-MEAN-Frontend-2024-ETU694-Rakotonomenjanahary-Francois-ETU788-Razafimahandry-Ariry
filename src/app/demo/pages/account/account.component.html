@@ -17,7 +17,7 @@
               </thead>
               <tbody >
                 <tr *ngFor="let dt of data.transactions">
-                  <th scope="row">{{ dt.date }}</th>
+                  <th scope="row">{{ dt.date | date:'fullDate' }} {{ dt.date | date:'HH:mm' }}</th>
                   <td>{{ dt.montant | currency:'MGA' }}</td>
                   <td>{{ dt.service }}</td>
                  

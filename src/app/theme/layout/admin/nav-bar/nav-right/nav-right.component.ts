@@ -39,12 +39,15 @@ export class NavRightComponent {
   friendId: boolean;
   router : Router;
   tokenService : TokenService;
+  user  ;
   constructor(private toastrService : ToastrService , config: NgbDropdownConfig , tokenService: TokenService , router :  Router , private cookieService : CookieService) {
     config.placement = 'bottom-right';
     this.visibleUserList = false;
     this.chatMessage = false;
     this.tokenService = tokenService ;
     this.router = router ;
+    let  userToken : any = jwtDecode(this.tokenService.getToken());
+    this.user = userToken.user.username;
   }
 
   onChatToggle(friend_id) {

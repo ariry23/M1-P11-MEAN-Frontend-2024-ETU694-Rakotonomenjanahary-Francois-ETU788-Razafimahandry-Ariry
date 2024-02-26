@@ -92,7 +92,7 @@ export class EditPreferencesComponent implements OnInit {
       this.modalRef.close()
       this.editSuccess.emit();
     }, err => {
-      this.toastrService.error(err.message);
+      this.toastrService.error(err.error);
     })
 
   }

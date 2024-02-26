@@ -41,7 +41,7 @@ export default class ListComponent implements OnInit{
       this.data = datas.data;
       console.log(this.data);
     }, err => {
-      this.toastrService.error(err);
+      this.toastrService.error(err.error);
     })
   }
 }

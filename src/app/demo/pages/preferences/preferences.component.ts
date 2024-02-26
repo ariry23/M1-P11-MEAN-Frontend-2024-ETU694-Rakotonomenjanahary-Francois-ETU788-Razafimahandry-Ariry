@@ -44,7 +44,7 @@ export default class PreferencesComponent implements OnInit{
     this.apiService.postData('user/list-pref',apiData).subscribe(datas => {
       this.data = datas.data;
     }, err => {
-      this.toastrService.error(err);
+      this.toastrService.error(err.error);
     })
   }
 
@@ -52,7 +52,7 @@ export default class PreferencesComponent implements OnInit{
     this.apiService.getData('service/list').subscribe(datas => {
       this.dataServ = datas.data;
     }, err => {
-      this.toastrService.error(err);
+      this.toastrService.error(err.error);
     })
   }
 
@@ -60,7 +60,7 @@ export default class PreferencesComponent implements OnInit{
     this.apiService.getData('personnel/list').subscribe(datas => {
       this.dataPers = datas.data;
     }, err => {
-      this.toastrService.error(err);
+      this.toastrService.error(err.error);
     })
   }
 

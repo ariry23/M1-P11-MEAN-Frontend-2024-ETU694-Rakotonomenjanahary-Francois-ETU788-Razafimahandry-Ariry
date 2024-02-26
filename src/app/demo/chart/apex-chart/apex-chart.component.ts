@@ -272,7 +272,7 @@ export default class ApexChartComponent  implements OnInit{
     this.areaSmoothChart = {
       series: [
         {
-          name: 'series1',
+          name: 'CA',
           data: this.seriesCA
         },
         // {
