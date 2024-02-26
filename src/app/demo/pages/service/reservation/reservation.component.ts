@@ -64,7 +64,7 @@ export class ReservationComponent {
         this.ajoutSuccess.emit();
       },
       err => {
-          this.toastrService.error(err.message); 
+          this.toastrService.error(err.error ); 
       }
     );
   }
@@ -73,7 +73,7 @@ export class ReservationComponent {
     this.apiService.getData(PERSONNEL_LIST).subscribe(datas => {
       this.employes = datas.data ; 
     }, err => {
-      this.toastrService.error(err) ; 
+      this.toastrService.error(err.error) ; 
     })
   }
 
