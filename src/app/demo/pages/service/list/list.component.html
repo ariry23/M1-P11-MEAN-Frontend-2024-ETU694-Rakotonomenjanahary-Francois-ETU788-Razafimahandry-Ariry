@@ -6,10 +6,10 @@
     </div>
   </div>
 <div class="row mt-2">
-    <div *ngFor="let dt of data" class="col-md-6 col-lg-4">
+    <div *ngFor="let dt of data" class=" col-lg-3"> <!--col-md-6-->
         <div (click)="openReservationModal(dt)" class="card">
             <img ngSrc="assets/images/service/coiffure-homme-v2.jpg" width="auto" height="auto" priority>
-            <div class="card-content">
+            <div class="card-cnt">
                 <div class="title">{{ dt.nom }}</div>
                 <div class="montant">{{ dt.prix |  currency:'MGA' }}</div>
 
