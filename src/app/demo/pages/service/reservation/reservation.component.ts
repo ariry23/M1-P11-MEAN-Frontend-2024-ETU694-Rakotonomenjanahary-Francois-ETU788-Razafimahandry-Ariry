@@ -61,9 +61,12 @@ export class ReservationComponent {
     this.apiService.postData(USER_RESA , reservationData).subscribe(
       res => {
         this.modalRef.close();
+       
         this.ajoutSuccess.emit();
       },
       err => {
+        console.log("reservation data :") ;
+        console.log(reservationData);
           this.toastrService.error(err.error ); 
       }
     );

@@ -3,7 +3,7 @@ import packageInfo from '../../package.json';
 export const environment = {
   appVersion: packageInfo.version,
   production: true,
-  apiBaseUrl: 'http://localhost:3000',
+  apiBaseUrl: 'https://back-end-express-ws.onrender.com',
 };
 /*
  * For easier debugging in development mode, you can import the following file
