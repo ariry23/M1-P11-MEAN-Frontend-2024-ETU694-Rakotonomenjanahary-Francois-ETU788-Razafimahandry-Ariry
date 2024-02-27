@@ -12,6 +12,7 @@ import { SERVICE_MANAGEMENT_LIST, SERVICE_SEARCH } from 'src/app/constants/api.c
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'service-list',
@@ -21,9 +22,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   imports: [CommonModule, SharedModule  , NgOptimizedImage, NgxSpinnerModule , MatFormFieldModule],
 })
 export default class ListComponent implements OnInit {    
+  
   data : any[] ;    
   reservationModalRef: MdbModalRef<any> | null = null;  
-  constructor(private toastrService : ToastrService , private apiService : ApiService , private router : Router , public modalService : MdbModalService){}
+  apiBaseUrl : string = "" ; 
+  constructor(private toastrService : ToastrService , private apiService : ApiService ,
+     private router : Router , public modalService : MdbModalService){
+      this.apiBaseUrl = environment.apiBaseUrl;
+     }
   ngOnInit(): void {                                                    
     console.log("last successfull route : ");                           
     //console.log(this.routerService.getLastSuccessfulRoute());         
