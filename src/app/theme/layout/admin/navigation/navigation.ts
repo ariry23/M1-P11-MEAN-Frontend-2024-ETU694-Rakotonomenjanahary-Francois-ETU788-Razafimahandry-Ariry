@@ -131,15 +131,15 @@ const navigationItems = [
       icon: 'feather icon-sidebar', 
       roles : ['employee'] , 
     },
-    // {
-    //   id: 'gestion-pref',
-    //   title: 'Gestion de preferences',
-    //   type: 'item',
-    //   url: '/user/gestion-pref',
-    //   classes: 'nav-item',
-    //   icon: 'feather icon-sidebar', 
-    //   roles : ['employee'] , 
-    // },
+    {
+      id: 'gestion-pref',
+      title: 'Gestion de preferences',
+      type: 'item',
+      url: '/user/gestion-pref',
+      classes: 'nav-item',
+      icon: 'feather icon-sidebar', 
+      roles : ['customer'] , 
+    },
     
   
 ];

@@ -74,7 +74,7 @@ const routes : Routes = [
         loadComponent: () => import('./demo/pages/task-list/task-list.component'),
       },
       {
-        canActivate: [EmployeeGuard] ,
+        canActivate: [CustomerGuard] ,
         path: 'user/gestion-pref',  
         loadComponent: () => import('./demo/pages/preferences/preferences.component'),
       },

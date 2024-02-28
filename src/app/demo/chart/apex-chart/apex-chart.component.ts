@@ -88,6 +88,17 @@ export default class ApexChartComponent  implements OnInit{
   categoriesWavgEmpl = [];
 
   constructor(private apiService: ApiService, private toastrService: ToastrService) {
+    
+    
+  }
+
+  ngOnInit(): void {
+    this.getDataResaPerMonth();
+    this.getDataResaPerDay();
+    this.getDataCAPerDay();
+    // this.getDataCAPerMonth();
+    this.getTempsAvgEmpl();
+
     this.barSimpleChart = {
       series: [
         {
@@ -180,51 +191,7 @@ export default class ApexChartComponent  implements OnInit{
         },
       },
     };
-    // this.barStackedChart = {
-    //   series: [
-    //     {
-    //       name: 'PRODUCT A',
-    //       data: [44, 55, 41, 67, 22, 43, 21, 49],
-    //     },
-    //     // {
-    //     //   name: 'PRODUCT B',
-    //     //   data: [13, 23, 20, 8, 13, 27, 33, 12],
-    //     // },
-    //     // {
-    //     //   name: 'PRODUCT C',
-    //     //   data: [11, 17, 15, 15, 21, 14, 15, 13],
-    //     // },
-    //   ],
-    //   chart: {
-    //     type: 'bar',
-    //     height: 350,
-    //     stacked: true,
-    //     stackType: '100%',
-    //   },
-    //   responsive: [
-    //     {
-    //       breakpoint: 480,
-    //       options: {
-    //         legend: {
-    //           position: 'bottom',
-    //           offsetX: -10,
-    //           offsetY: 0,
-    //         },
-    //       },
-    //     },
-    //   ],
-    //   xaxis: {
-    //     categories: this.categoriesResaPerMonth,
-    //   },
-    //   fill: {
-    //     opacity: 1,
-    //   },
-    //   legend: {
-    //     position: 'right',
-    //     offsetX: 0,
-    //     offsetY: 50,
-    //   },
-    // };
+    
     this.areaAngleChart = {
       chart: {
         height: 380,
@@ -373,15 +340,6 @@ export default class ApexChartComponent  implements OnInit{
         offsetY: 80,
       },
     };
-    
-  }
-
-  ngOnInit(): void {
-    this.getDataResaPerMonth();
-    this.getDataResaPerDay();
-    this.getDataCAPerDay();
-    // this.getDataCAPerMonth();
-    this.getTempsAvgEmpl();
   }
 
   getDataResaPerDay():void{

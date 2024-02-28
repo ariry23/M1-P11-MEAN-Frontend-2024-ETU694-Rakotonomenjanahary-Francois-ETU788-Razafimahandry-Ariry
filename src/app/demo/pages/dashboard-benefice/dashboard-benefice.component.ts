@@ -71,7 +71,14 @@ export default class DashboardBeneficeComponent implements OnInit {
 
   constructor(private apiService: ApiService, private toastrService: ToastrService, private ref: ChangeDetectorRef, private zone: NgZone) {
 
-      this.buildCalculateForm();
+      
+
+  }
+
+  ngOnInit(): void {
+
+    // Run the setInterval function outside the Angular zone
+    this.buildCalculateForm();
       this.caculateBenefice();
       this.barSimpleChart = {
         series: [
@@ -151,13 +158,6 @@ export default class DashboardBeneficeComponent implements OnInit {
         },
       };
       this.ref.detectChanges;
-
-  }
-
-  ngOnInit(): void {
-
-    // Run the setInterval function outside the Angular zone
-
   }
   ngOnChanges(): void {
     this.caculateBenefice();
